@@ -1,5 +1,6 @@
 // mui.d.ts
 import "@mui/material/styles";
+import { SpacingType } from "./spacing/spacing";
 
 declare module "@mui/material/styles" {
   interface Theme {
@@ -25,7 +26,10 @@ declare module "@mui/material/styles" {
         extraMidGray: string;
         darkShadow: string;
         bodyBgColor: string;
+        headerBgColor: string;
+        dividerBgColor: string;
       };
+      spacing: SpacingType;
     };
   }
 
@@ -52,7 +56,10 @@ declare module "@mui/material/styles" {
         extraMidGray?: string;
         darkShadow?: string;
         bodyBgColor?: string;
+        headerBgColor?: string;
+        dividerBgColor?: string;
       };
+      spacing: SpacingType;
     };
   }
 }

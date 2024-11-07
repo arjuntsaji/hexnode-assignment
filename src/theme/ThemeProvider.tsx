@@ -1,5 +1,13 @@
-import { createTheme, responsiveFontSizes, ThemeProvider } from "@mui/material";
+import {
+  createTheme,
+  responsiveFontSizes,
+  StyledEngineProvider,
+  ThemeProvider,
+} from "@mui/material";
 import React from "react";
+import GlobalStyle from "./GlobalStyle";
+import { Spacing } from "./spacing/spacing";
+import ComponentsOverrides from "./overrides";
 
 const resolveCssVariable = (variable: string): string => `var(${variable})`;
 
@@ -28,8 +36,11 @@ function AppThemeProvider({
         lightThinGray: resolveCssVariable("--hex-light-thin-gray"),
         extraMidGray: resolveCssVariable("--hex-ex-mid-gray"),
         darkShadow: resolveCssVariable("--hex-dark-shadow"),
-        bodyBgColor: resolveCssVariable("--body-bg-color"),
+        bodyBgColor: resolveCssVariable("--hex-body-bg-color"),
+        headerBgColor: resolveCssVariable("--hex-header-bg-color"),
+        dividerBgColor: resolveCssVariable("--hex-divider-bg-color"),
       },
+      spacing: Spacing,
     },
 
     typography: {
@@ -39,32 +50,52 @@ function AppThemeProvider({
         lineHeight: 1.29,
       },
       h2: {
-        fontWeight: 700,
-        fontSize: "32px",
-        lineHeight: 1.25,
         "@media (min-width:640px)": {
-          fontSize: "40px",
+          fontSize: "40px !important",
           lineHeight: 1.3,
+          fontWeight: 700,
+        },
+        "@media (max-width:640px)": {
+          fontWeight: 700,
+          fontSize: "32px",
+          lineHeight: 1.25,
         },
       },
       h3: {
         fontWeight: 700,
         fontSize: "30px",
-        lineHeight: 1.27, // 38px / 30px ≈ 1.27 (unitless)
+        lineHeight: 1.27,
       },
       h4: {
         fontWeight: 700,
         fontSize: "16px",
-        lineHeight: 1.5, // 24px / 16px = 1.5 (unitless)
+        lineHeight: 1.5,
         "@media (min-width:640px)": {
           fontSize: "20px",
-          lineHeight: 1.6, // 32px / 20px = 1.6 (unitless)
+          lineHeight: 1.6,
         },
       },
     },
+    breakpoints: {
+      values: {
+        xs: 0,
+        sm: 639,
+        md: 900,
+        lg: 1279,
+        xl: 1536,
+      },
+    },
   });
+  theme.components = ComponentsOverrides(theme);
   const responsiveTheme = responsiveFontSizes(theme);
-  return <ThemeProvider theme={responsiveTheme}>{children}</ThemeProvider>;
+  return (
+    <StyledEngineProvider injectFirst>
+      <ThemeProvider theme={responsiveTheme}>
+        <GlobalStyle />
+        {children}
+      </ThemeProvider>
+    </StyledEngineProvider>
+  );
 }
 
 export default AppThemeProvider;
