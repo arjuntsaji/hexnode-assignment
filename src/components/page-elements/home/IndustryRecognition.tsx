@@ -40,6 +40,14 @@ function IndustryRecognition() {
               md: "-10px",
               xs: "0px",
             },
+            flexDirection: {
+              md: "row",
+              xs: "column",
+            },
+            alignItems: {
+              md: "initial",
+              xs: "center",
+            },
           }}
         >
           {IndustryList?.map((industry, index) => {
@@ -62,10 +70,15 @@ function IndustryRecognition() {
                       top: "-5px",
                     },
                     transition: "all 0.3s ease-out",
+                    alignItems: {
+                      md: "start",
+                      xs: "center",
+                    },
                   }}
                   component={"a"}
                   display={"flex"}
                   flexDirection={"column"}
+                  maxWidth={"340px"}
                 >
                   <Box maxWidth={"156px"} minWidth={"82px"} maxHeight={"25px"}>
                     <Box
@@ -91,8 +104,15 @@ function IndustryRecognition() {
                     {industry?.label}
                   </Box>
                 </Box>
+
                 {IndustryList?.length - 1 !== index && (
-                  <Box width={"1px"} bgcolor={"hsla(0, 0%, 100%, .2)"}></Box>
+                  <Box
+                    sx={{
+                      width: { md: "1px", xs: "107px" },
+                    }}
+                    bgcolor={"hsla(0, 0%, 100%, .2)"}
+                    flexBasis={"1px"}
+                  ></Box>
                 )}
               </>
             );

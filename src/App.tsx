@@ -5,6 +5,7 @@ import { Stack, Typography } from "@mui/material";
 import AppLayout from "./layouts/AppLayout";
 import QuickStartSection from "./components/page-elements/home/QuickStartSection";
 import IndustryRecognition from "./components/page-elements/home/IndustryRecognition";
+import KioskModeSection from "./components/page-elements/home/KioskModeSection";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <AppLayout>
         <QuickStartSection />
         <IndustryRecognition />
+        <KioskModeSection />
       </AppLayout>
     </div>
   );
