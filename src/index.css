@@ -29,4 +29,5 @@ body {
   --hex-body-bg-color: #fff;
   --hex-header-bg-color: #090f1d;
   --hex-divider-bg-color: rgb(219 217 210);
+  --hex-text-light: rgb(255 255 255);
 }

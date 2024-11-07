@@ -28,6 +28,7 @@ declare module "@mui/material/styles" {
         bodyBgColor: string;
         headerBgColor: string;
         dividerBgColor: string;
+        textLight: string;
       };
       spacing: SpacingType;
     };
@@ -58,8 +59,14 @@ declare module "@mui/material/styles" {
         bodyBgColor?: string;
         headerBgColor?: string;
         dividerBgColor?: string;
+        textLight?: string;
       };
       spacing: SpacingType;
     };
+  }
+}
+declare module "@mui/material/styles" {
+  interface BreakpointOverrides {
+    mdlg: true;
   }
 }

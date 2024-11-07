@@ -164,7 +164,7 @@ export default function AppBar(props: Props) {
           {drawer}
         </Drawer>
       </nav>
-      <Box component="main" sx={{ p: 3 }}>
+      <Box component="main" sx={{ p: "14px", px: 0 }}>
         <Toolbar />
         {props?.children}
       </Box>

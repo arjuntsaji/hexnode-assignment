@@ -39,6 +39,7 @@ function AppThemeProvider({
         bodyBgColor: resolveCssVariable("--hex-body-bg-color"),
         headerBgColor: resolveCssVariable("--hex-header-bg-color"),
         dividerBgColor: resolveCssVariable("--hex-divider-bg-color"),
+        textLight: resolveCssVariable("--hex-text-light"),
       },
       spacing: Spacing,
     },
@@ -80,7 +81,8 @@ function AppThemeProvider({
       values: {
         xs: 0,
         sm: 639,
-        md: 900,
+        md: 768,
+        mdlg: 1024,
         lg: 1279,
         xl: 1536,
       },
