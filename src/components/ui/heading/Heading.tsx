@@ -2,11 +2,11 @@ import { Box, BoxProps, SxProps } from "@mui/material";
 import React, { ReactNode } from "react";
 
 interface HeadingProps extends BoxProps {
-  variant: "h1" | "h2" | "h3" | "h4";
-  children: ReactNode;
+  variant?: "h1" | "h2" | "h3" | "h4";
+  children?: ReactNode;
 }
 
-function Heading({ variant, children, ...others }: HeadingProps) {
+function Heading({ variant = "h1", children, ...others }: HeadingProps) {
   const style = {
     h1: {
       fontWeight: 700,
@@ -41,7 +41,7 @@ function Heading({ variant, children, ...others }: HeadingProps) {
       component={variant}
       {...others}
       sx={{
-        m: 0,
+        m: "auto",
         ...headingStyle,
         ...others?.sx,
       }}

@@ -1,32 +1,149 @@
 import { Box, Stack, Typography } from "@mui/material";
-import React, { MouseEvent, useRef, useState } from "react";
+import React, { useState } from "react";
 import Container from "../../ui/container/Container";
 import Heading from "../../ui/heading/Heading";
+import Paragraph from "../../ui/heading/Paragraph";
+
+import TabPanel from "../../ui/tabs/TabPanel";
+import Tabs from "../../ui/tabs/Tabs";
 
 const TabItems = [
-  "Single App Kiosk",
-  "Multi-App Kiosk",
-  "Web-based Kiosk",
-  "Digital Signage",
-  "ASAM Kiosk",
+  { label: "Single App Kiosk", value: 0 },
+  { label: "Multi-App Kiosk", value: 1 },
+  { label: "Web-based Kiosk", value: 2 },
+  { label: "Digital Signage", value: 3 },
+  { label: "ASAM Kiosk", value: 4 },
+];
+const TabPanelData = [
+  {
+    label: "Powerful Single-App Kiosk solutions for enhanced control",
+    value: 0,
+    items: [
+      {
+        label:
+          "Provision the devices to run one specialized application, with limited functionalities.",
+      },
+      {
+        label:
+          "Customize the device settings to cater to a specific use-case each time.",
+      },
+      {
+        label:
+          "Use Hexnode’s Advanced Kiosk settings for additional restrictions or expanded device functionalities while in kiosk mode.",
+      },
+      {
+        label:
+          "Empower your administrators with full control over the kiosk devices.",
+      },
+    ],
+    imageUrl:
+      "https://www.hexnode.com/_next/image/?url=https%3A%2F%2Fstatic.hexnode.com%2Fv2%2Fassets%2Fimg%2Fads-pages%2Fhexnode-kiosk%2Fsingle-app-kios-image.jpg&w=640&q=100",
+  },
+  {
+    label: "Elevate efficiency with Multi-App Kiosk",
+    value: 1,
+    items: [
+      {
+        label:
+          "Limit device access to approved apps, ensuring focus and productivity.",
+      },
+      {
+        label:
+          "With default phone and settings app inclusion, reduce distractions by providing users access to essential functions only.",
+      },
+      {
+        label:
+          "With Hexnode's peripheral settings admins can allow necessary device settings while retaining control.",
+      },
+      {
+        label:
+          "Simplify device management while empowering user productivity by deploying Multi-App Kiosk Mode.",
+      },
+    ],
+    imageUrl:
+      "https://www.hexnode.com/_next/image/?url=https%3A%2F%2Fstatic.hexnode.com%2Fv2%2Fassets%2Fimg%2Fads-pages%2Fhexnode-kiosk%2Fmulti-app-kiosk-image.jpg&w=640&q=100",
+  },
+  {
+    label: "Explore the new way to manage web apps and websites",
+    value: 2,
+    items: [
+      {
+        label:
+          "Let users access essential and approved web apps, website and files only.",
+      },
+      {
+        label:
+          "Make the best use of website kiosk with Hexnode's advanced settings.",
+      },
+      {
+        label: "Tailor your experience to match your unique use case.",
+      },
+      {
+        label:
+          "From configuring toolbar options to scheduling page refresh, remote debugging, and limiting incognito tabs, take full control of your website kiosk experience.",
+      },
+    ],
+    imageUrl:
+      "https://www.hexnode.com/_next/image/?url=https%3A%2F%2Fstatic.hexnode.com%2Fv2%2Fassets%2Fimg%2Fads-pages%2Fhexnode-kiosk%2Fweb-based-kiosk-image.jpg&w=640&q=100",
+  },
+  {
+    label: "Capture attention with Digital Signage Kiosks",
+    value: 3,
+    items: [
+      {
+        label:
+          "Transform your devices into captivating digital signage kiosks that grab attention.",
+      },
+      {
+        label:
+          "Engage your audience with vibrant images and seamless video streaming.",
+      },
+      {
+        label:
+          "Customize media files with trimming, muting, and background music.",
+      },
+      {
+        label:
+          "Advertise and show off your brand aesthetics to attract customers in different ways.",
+      },
+      {
+        label:
+          "Take control with Hexnode to reestablish your brand's presence.",
+      },
+    ],
+    imageUrl:
+      "https://www.hexnode.com/_next/image/?url=https%3A%2F%2Fstatic.hexnode.com%2Fv2%2Fassets%2Fimg%2Fads-pages%2Fhexnode-kiosk%2Fdigital-signage-kiosk-image.jpg&w=640&q=100",
+  },
+  {
+    label: "Unlock the power of Autonomous Single App Mode (ASAM)",
+    value: 4,
+    items: [
+      {
+        label:
+          "A feature that empowers your iOS app to seamlessly secure itself in the foreground.",
+      },
+      {
+        label:
+          "Transform tablets or devices into dedicated point-of-sale (POS) systems by preventing interruptions from other applications or notifications.",
+      },
+      {
+        label:
+          "Create focused, efficient and secure digital environments to match your requirements.",
+      },
+      {
+        label:
+          "Configure ASAM effortlessly and elevate your user experience like never before.",
+      },
+    ],
+    imageUrl:
+      "https://www.hexnode.com/_next/image/?url=https%3A%2F%2Fstatic.hexnode.com%2Fv2%2Fassets%2Fimg%2Fads-pages%2Fhexnode-kiosk%2Fasam-kiosk-image.jpg&w=640&q=100",
+  },
 ];
 function KioskModeSection() {
   const [tabValue, setTabValue] = useState(0);
-  const [offset, setOffset] = useState<number>(0);
-  console.log(offset, "offsetoffset");
 
-  // Reference to the ul element to calculate offsets
-  const ulRef = useRef<HTMLUListElement>(null);
-
-  // Function to handle tab click, calculates the offset of clicked li relative to ul
-  const handleTabClick = (index: number, element: HTMLLIElement) => {
-    setTabValue(index);
-
-    if (ulRef.current) {
-      const ulLeft = ulRef.current.getBoundingClientRect().left;
-      const liLeft = element.getBoundingClientRect().left;
-      setOffset(liLeft - ulLeft);
-    }
+  const handleTabClick = (value: number) => {
+    setTabValue(value);
   };
 
   return (
@@ -37,117 +154,130 @@ function KioskModeSection() {
       textAlign={"center"}
     >
       <Container>
-        <Typography variant="h2" maxWidth={"900px"} mx={"auto"}>
-          Specific kiosk modes for unique use cases
-        </Typography>
-
-        <Box
+        <Stack
           sx={{
-            overflowX: "scroll",
-            scrollbarWidth: "none",
-            scrollBehavior: "smooth",
-            width: "100%",
-            border: "1px solid rgb(247 247 247)",
+            gap: { sm: "60px", xs: "40px" },
           }}
         >
-          <Box
-            display={"flex"}
-            component={"ul"}
-            m={0}
-            p={0}
-            sx={{
-              scrollBehavior: "smooth",
-              whiteSpace: "nowrap",
-              display: "flex",
-              justifyContent: "space-between",
-            }}
-            position={"relative"}
-            ref={ulRef}
-          >
-            <Box
-              width={"243px"}
-              borderRadius={"4px"}
-              height={"80px"}
-              bgcolor={"rgb(2 10 25)"}
-              position={"absolute"}
-              sx={{
-                transitionProperty: "all",
-                transitionTimingFunction: "cubic-bezier(.4,0,.2,1)",
-                transitionDuration: ".6s",
-                left: `${offset}px`,
-                zIndex: "-2",
-              }}
-            >
-              ff
-            </Box>
-            {TabItems?.map((item, index) => {
+          <Typography variant="h2" maxWidth={"900px"} mx={"auto"}>
+            Specific kiosk modes for unique use cases
+          </Typography>
+          <Box>
+            <Tabs
+              tabItems={TabItems}
+              handleChange={handleTabClick}
+              tabValue={tabValue}
+            />
+            {TabPanelData?.map((data) => {
               return (
-                <Box
-                  display={"flex"}
-                  component={"li"}
-                  px={"30px"}
-                  minHeight={"80px"}
-                  textAlign={"center"}
-                  //   sx={{
-                  //     "::before": {
-                  //       content: '""',
-                  //       width: "2px",
-                  //       backgroundColor: "rgb(247 247 247)",
-                  //       left: 0,
-                  //     },
-                  //   }}
-                  borderLeft={"2px solid rgb(247 247 247)"}
-                  width={"100%"}
-                  flex={"1 1 0%"}
-                  position={"relative"}
-                  onClick={(e: MouseEvent<HTMLLIElement>) => {
-                    handleTabClick(index, e.currentTarget);
-                  }}
-                >
+                <TabPanel currentTabValue={tabValue} value={data.value}>
                   <Box
                     display={"flex"}
-                    alignItems={"center"}
-                    justifyContent={"center"}
+                    sx={{
+                      gap: { mdlg: "40px", xs: "0px" },
+                      mb: {
+                        mdlg: "0px",
+                        xs: "20px",
+                      },
+                      flexDirection: {
+                        mdlg: "row",
+                        xs: "column-reverse",
+                      },
+                    }}
                   >
-                    <Typography
-                      component={"p"}
-                      py={"26px"}
-                      fontSize={"22px"}
-                      fontWeight={"600"}
-                      lineHeight={"24px"}
-                      color={
-                        tabValue === index ? "#fff" : "rgba(2, 10, 25, .5)"
-                      }
-                      maxWidth={"240px"}
+                    <Stack flex={1} sx={{ gap: { mdlg: "40px", xs: "15px" } }}>
+                      <Heading variant="h3">{data.label}</Heading>
+                      <Box
+                        component={"ul"}
+                        m="0"
+                        display={"flex"}
+                        flexDirection={"column"}
+                        sx={{
+                          gap: {
+                            mdlg: "25px",
+                            xs: "10px",
+                          },
+                        }}
+                      >
+                        {data?.items?.map((item) => {
+                          return (
+                            <Box
+                              component={"li"}
+                              sx={{
+                                listStyleType: "none",
+                              }}
+                            >
+                              <Box position={"relative"}>
+                                <Box
+                                  sx={{
+                                    position: "absolute",
+                                    left: "0px",
+                                    top: "8px",
+                                  }}
+                                >
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="14.393"
+                                    height="10.111"
+                                  >
+                                    <path
+                                      fill="none"
+                                      stroke="#60c458"
+                                      strokeWidth={2}
+                                      d="M.697 4.107 5.45 8.718l8.247-8"
+                                      data-name="tick - icon"
+                                    />
+                                  </svg>
+                                </Box>
+                                <Paragraph
+                                  sx={{
+                                    pl: { sm: "30px", xs: "25px" },
+                                  }}
+                                >
+                                  {item.label}
+                                </Paragraph>
+                              </Box>
+                            </Box>
+                          );
+                        })}
+                      </Box>
+                    </Stack>
+                    <Box
+                      flex={1}
+                      sx={{
+                        mb: { mdlg: "0", xs: "20px" },
+                        maxWidth: { sm: "460px", xs: "308px" },
+                        width: "100%",
+                      }}
                     >
-                      {item}
-                    </Typography>
+                      <Box borderRadius={"10px"} overflow={"hidden"}>
+                        <Box
+                          component={"figure"}
+                          m="0"
+                          sx={{
+                            verticalAlign: "middle",
+                            maxWidth: "100%",
+                            width: "auto",
+                            position: "relative",
+                          }}
+                        >
+                          <Box
+                            component={"img"}
+                            sx={{
+                              maxWidth: "100%",
+                              height: "auto",
+                            }}
+                            src={data.imageUrl}
+                          ></Box>
+                        </Box>
+                      </Box>
+                    </Box>
                   </Box>
-                </Box>
+                </TabPanel>
               );
             })}
           </Box>
-        </Box>
-        <Box
-          p={"40px"}
-          bgcolor={"rgb(247 247 247)"}
-          display={"flex"}
-          sx={{
-            gap: { mdlg: "40px", xs: "0px" },
-            mb: {
-              mdlg: "0px",
-              xs: "20px",
-            },
-          }}
-          textAlign={"initial"}
-        >
-          <Stack flex={1} sx={{ gap: { mdlg: "40px", xs: "15px" } }}>
-            <Heading variant="h3">
-              Explore the new way to manage web apps and websites
-            </Heading>
-          </Stack>
-          <Box flex={1}>1</Box>
-        </Box>
+        </Stack>
       </Container>
     </Box>
   );
