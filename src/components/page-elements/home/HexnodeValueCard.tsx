@@ -2,7 +2,7 @@ import { Box } from "@mui/material";
 import React, { useRef, useState } from "react";
 import Container from "../../ui/container/Container";
 import Heading from "../../ui/heading/Heading";
-import Paragraph from "../../ui/heading/Paragraph";
+
 import Slider from "react-slick";
 const sliderData = [
   {
@@ -437,7 +437,7 @@ function HexnodeValueCard() {
 
 export default HexnodeValueCard;
 function PrevArrow(props: any) {
-  const { className, style, onClick, status } = props;
+  const { onClick, status } = props;
   return (
     <Box
       component={"button"}
@@ -476,7 +476,7 @@ function PrevArrow(props: any) {
 }
 
 function NextArrow(props: any) {
-  const { className, style, onClick, status } = props;
+  const { onClick, status } = props;
   return (
     <Box
       component={"button"}

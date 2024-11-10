@@ -1,7 +1,5 @@
 import { Box, Button } from "@mui/material";
-import React from "react";
 import Container from "../../ui/container/Container";
-import Heading from "../../ui/heading/Heading";
 import Input from "../../ui/input/Input";
 
 function FreeTrialSection() {

@@ -1,4 +1,4 @@
-import { Box, BoxProps, SxProps } from "@mui/material";
+import { Box, BoxProps } from "@mui/material";
 import React, { ReactNode } from "react";
 
 interface HeadingProps extends BoxProps {

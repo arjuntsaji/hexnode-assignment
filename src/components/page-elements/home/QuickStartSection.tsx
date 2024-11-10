@@ -1,5 +1,5 @@
-import { Box, Button, InputBase, Stack, Typography } from "@mui/material";
-import React from "react";
+import { Box, Button, Stack } from "@mui/material";
+
 import Input from "../../ui/input/Input";
 import Container from "../../ui/container/Container";
 import Heading from "../../ui/heading/Heading";

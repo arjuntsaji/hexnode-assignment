@@ -1,4 +1,4 @@
-import { Box, Stack } from "@mui/material";
+import { Box } from "@mui/material";
 
 import AnimatedBox from "../animation/AnimatedBox";
 import React, { useEffect, useRef } from "react";
