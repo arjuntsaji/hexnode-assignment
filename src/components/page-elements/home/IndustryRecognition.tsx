@@ -85,7 +85,12 @@ function IndustryRecognition() {
                   flexDirection={"column"}
                   maxWidth={"340px"}
                 >
-                  <Box maxWidth={"156px"} minWidth={"82px"} maxHeight={"25px"}>
+                  <Box
+                    maxWidth={"156px"}
+                    minWidth={"82px"}
+                    maxHeight={"25px"}
+                    mb={"15px"}
+                  >
                     <Box
                       component={"img"}
                       src={industry?.industryLogoUrl}

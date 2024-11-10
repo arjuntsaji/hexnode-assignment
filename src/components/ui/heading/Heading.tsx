@@ -45,7 +45,7 @@ function Heading({
       component={variant}
       {...others}
       sx={{
-        m: "auto",
+        m: "0",
         ...headingStyle,
         ...others?.sx,
       }}

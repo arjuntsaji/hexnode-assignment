@@ -2,6 +2,7 @@ import { Box, Button, InputBase, Stack, Typography } from "@mui/material";
 import React from "react";
 import Input from "../../ui/input/Input";
 import Container from "../../ui/container/Container";
+import Heading from "../../ui/heading/Heading";
 
 function QuickStartSection() {
   return (
@@ -9,7 +10,11 @@ function QuickStartSection() {
       bgcolor={"rgb(2 10 25)"}
       component={"section"}
       sx={{
-        pb: { lg: "0", xs: "30px" },
+        pb: { xs: "30px" },
+        pt: {
+          lg: " 120px",
+          xs: "90px",
+        },
       }}
     >
       <Container
@@ -35,15 +40,20 @@ function QuickStartSection() {
             gap: { md: "40px", xs: "20px" },
           }}
         >
-          <Typography
+          <Heading
             variant="h1"
             sx={{
               maxWidth: { lg: "498px", sm: "550px", xs: "100%" },
               color: (theme) => theme.hexnode.colors.textLight,
+              textAlign: {
+                xs: "center",
+                sm: "inherit",
+              },
             }}
+            textAlign={"center"}
           >
             Turn your devices into kiosks in a few minutes with Hexnode UEM
-          </Typography>
+          </Heading>
           <Box
             display={"flex"}
             sx={{
@@ -52,6 +62,11 @@ function QuickStartSection() {
                 sm: "row",
                 xs: "column",
               },
+              alignItems: {
+                xs: "center",
+                sm: "initial",
+              },
+              // alignItems: "center",
             }}
           >
             <Box width={"100%"} sx={{ maxWidth: { sm: "280px", xs: "340px" } }}>
@@ -62,6 +77,7 @@ function QuickStartSection() {
               variant="contained"
               color="error"
               sx={{ maxWidth: { sm: "210px", xs: "340px" } }}
+              fullWidth
             >
               GET STARTED NOW!
             </Button>

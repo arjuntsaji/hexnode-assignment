@@ -84,6 +84,7 @@ export default function AppBar(props: Props) {
           paddingTop: "7px",
           paddingBottom: "2px",
           boxShadow: "none",
+          borderBottom: trigger ? "1px solid #dbd9d2" : "none",
         }}
       >
         <Toolbar
@@ -97,6 +98,9 @@ export default function AppBar(props: Props) {
             px: {
               xs: 0,
             },
+
+            transition: "all 0.3s linear",
+            mb: { lg: trigger ? "5px" : "0px" },
           }}
         >
           <Box
@@ -140,13 +144,23 @@ export default function AppBar(props: Props) {
               display: { xs: "none", lg: "block" },
               width: "50px",
               mt: "5px",
-              mb: "14px",
+              mb: {
+                lg: "auto",
+              },
             }}
           >
             <AppNameIcon color={trigger ? "#020a19" : "#fff"} />
           </Typography>
           <Box sx={{ display: { xs: "none", lg: "block" } }}>
-            <Button variant="contained" color="error">
+            <Button
+              variant="contained"
+              color="error"
+              sx={{
+                fontSize: "15px",
+                lineHeight: "24px",
+                fontFamily: "inherit",
+              }}
+            >
               14 DAY FREE TRIAL
             </Button>
           </Box>
@@ -174,13 +188,13 @@ export default function AppBar(props: Props) {
           {drawer}
         </Drawer>
       </nav>
-      <Box component="main" sx={{ p: "14px", px: 0 }}>
-        <Toolbar
+      <Box component="main" sx={{ px: 0 }}>
+        {/* <Toolbar
           sx={{
             height: "65px",
             backgroundColor: theme.hexnode.colors.headerBgColor,
           }}
-        />
+        /> */}
         {props?.children}
       </Box>
       <Footer />

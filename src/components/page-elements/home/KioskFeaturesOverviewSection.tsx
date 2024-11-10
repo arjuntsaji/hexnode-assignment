@@ -72,9 +72,9 @@ function KioskFeaturesOverviewSection() {
               xs: "20px",
               md: "20px",
             },
+            mx: "auto",
           }}
           textAlign={"center"}
-          m={"auto"}
         >
           What additional possibilities does the Kiosk mode offer?
         </Heading>
