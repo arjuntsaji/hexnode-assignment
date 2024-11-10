@@ -6,7 +6,11 @@ interface HeadingProps extends BoxProps {
   children?: ReactNode;
 }
 
-function Heading({ variant = "h1", children, ...others }: HeadingProps) {
+function Heading({
+  variant = "h1",
+  children,
+  ...others
+}: Readonly<HeadingProps>) {
   const style = {
     h1: {
       fontWeight: 700,

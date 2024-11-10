@@ -30,6 +30,7 @@ function IndustryRecognition() {
       sx={{
         py: { md: "30px" },
       }}
+      component={"section"}
     >
       <Container>
         <Box
@@ -46,6 +47,10 @@ function IndustryRecognition() {
             },
             alignItems: {
               md: "initial",
+              xs: "center",
+            },
+            justifyContent: {
+              md: "space-between",
               xs: "center",
             },
           }}

@@ -184,6 +184,7 @@ function KioskFeaturesOverviewSection() {
             {AccordionData.map((data, index) => {
               return (
                 <Stack
+                  key={index}
                   sx={{
                     pb: {
                       mdlg: "25px",
@@ -204,8 +205,8 @@ function KioskFeaturesOverviewSection() {
                       maxWidth: "calc(320px + 15px)",
                       display: {
                         mdlg: "none",
-                        // xs: activeAccordion ?? 0 === index ? "initial" : "none",
-                        xs: "none",
+                        xs: activeAccordion === index ? "initial" : "none",
+                        // xs: "none",
                       },
                     }}
                     borderRadius={"10px"}
@@ -244,7 +245,7 @@ function KioskFeaturesOverviewSection() {
                       transitionDuration: "0.3s",
                       height: {
                         xl: activeAccordion === index ? "138px" : "0px",
-                        lg: activeAccordion === index ? "166px" : "0px",
+                        mobile: activeAccordion === index ? "166px" : "0px",
                         mdlg: activeAccordion === index ? "194px" : "0px",
                         xs: activeAccordion === index ? "222px" : "0px",
                       },

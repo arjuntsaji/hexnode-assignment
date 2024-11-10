@@ -4,7 +4,14 @@ body {
     Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
   box-sizing: border-box;
 }
-
+*, body, html {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+blockquote, dd, dl, figure, h1, h2, h3, h4, h5, h6, hr, p, pre {
+  margin: 0;
+}
 :root {
   --hex-mid-night-blue: #101420;
   --hex-light-mid-night-blue: #111521;
@@ -26,7 +33,16 @@ body {
   --hex-ex-mid-gray: #e1e1e1;
   --hex-dark-shadow: #00000029;
   --hex-body-bg-color: #fff;
-  --hex-header-bg-color: #090f1d;
+  --hex-header-bg-color: rgb(2 10 25);
   --hex-divider-bg-color: rgb(219 217 210);
   --hex-text-light: rgb(255 255 255);
+}
+menu, ol, ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+img, video {
+  max-width: 100%;
+  height: auto;
 }

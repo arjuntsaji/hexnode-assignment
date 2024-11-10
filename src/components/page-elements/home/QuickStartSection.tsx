@@ -47,11 +47,15 @@ function QuickStartSection() {
           <Box
             display={"flex"}
             sx={{
-              gap: { sm: "8px", xs: 0 },
+              gap: { sm: "8px", xs: "20px" },
+              flexDirection: {
+                sm: "row",
+                xs: "column",
+              },
             }}
           >
             <Box width={"100%"} sx={{ maxWidth: { sm: "280px", xs: "340px" } }}>
-              <Input />
+              <Input placeholder="Your Work Email" />
             </Box>
 
             <Button

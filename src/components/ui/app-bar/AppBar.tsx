@@ -11,7 +11,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { AppNameIcon, CloseIcon, MenuIcon } from "../icons";
-import { Stack, useTheme } from "@mui/material";
+import { Stack, useScrollTrigger, useTheme } from "@mui/material";
 import Footer from "../footer/Footer";
 
 interface Props {
@@ -26,6 +26,13 @@ export default function AppBar(props: Props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const theme = useTheme();
+
+  const trigger = useScrollTrigger({
+    disableHysteresis: true,
+    threshold: 0,
+    target: window ? window() : undefined,
+  });
+  console.log(trigger, "triggertrigger");
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
@@ -69,11 +76,14 @@ export default function AppBar(props: Props) {
       <MUIAppBar
         component="nav"
         sx={{
-          backgroundColor: theme.hexnode.colors.headerBgColor,
+          backgroundColor: trigger
+            ? theme.hexnode.colors.bodyBgColor
+            : theme.hexnode.colors.headerBgColor,
           display: "flex",
           alignItems: "center",
           paddingTop: "7px",
           paddingBottom: "2px",
+          boxShadow: "none",
         }}
       >
         <Toolbar
@@ -95,19 +105,17 @@ export default function AppBar(props: Props) {
             width={"100%"}
             sx={{ display: { xs: "flex", lg: "none" } }}
           >
-            <Typography
-              variant="h6"
-              component="div"
+            <Box
+              component="a"
               sx={{
                 flexGrow: 1,
                 display: { lg: "none" },
                 width: "50px",
-                mt: "5px",
-                mb: "14px",
               }}
+              display={"flex"}
             >
-              <AppNameIcon />
-            </Typography>
+              <AppNameIcon color={trigger ? "#020a19" : "#fff"} />
+            </Box>
             <IconButton
               color="inherit"
               aria-label="open drawer"
@@ -118,7 +126,9 @@ export default function AppBar(props: Props) {
                 display: { lg: "none" },
               }}
             >
-              <MenuIcon />
+              <MenuIcon
+                color={trigger ? "#020a19" : theme.hexnode.colors.bodyBgColor}
+              />
             </IconButton>
           </Box>
 
@@ -133,7 +143,7 @@ export default function AppBar(props: Props) {
               mb: "14px",
             }}
           >
-            <AppNameIcon />
+            <AppNameIcon color={trigger ? "#020a19" : "#fff"} />
           </Typography>
           <Box sx={{ display: { xs: "none", lg: "block" } }}>
             <Button variant="contained" color="error">
@@ -165,7 +175,12 @@ export default function AppBar(props: Props) {
         </Drawer>
       </nav>
       <Box component="main" sx={{ p: "14px", px: 0 }}>
-        <Toolbar />
+        <Toolbar
+          sx={{
+            height: "65px",
+            backgroundColor: theme.hexnode.colors.headerBgColor,
+          }}
+        />
         {props?.children}
       </Box>
       <Footer />

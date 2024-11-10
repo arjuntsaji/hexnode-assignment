@@ -80,6 +80,7 @@ function AppThemeProvider({
     breakpoints: {
       values: {
         xs: 0,
+        mobile: 480,
         sm: 639,
         md: 768,
         mdlg: 1024,

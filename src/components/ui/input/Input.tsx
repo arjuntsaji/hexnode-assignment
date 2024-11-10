@@ -21,6 +21,9 @@ const Input = (props: React.InputHTMLAttributes<HTMLInputElement>) => {
           border: "none",
         },
         color: "inherit",
+        "&::placeholder": {
+          color: "#C6C6C6",
+        },
       }}
       component={"input"}
     />

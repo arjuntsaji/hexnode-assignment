@@ -1,6 +1,8 @@
 import React from "react";
+import { IconProps } from "./interface";
 
-export function AppNameIcon() {
+export function AppNameIcon(props: IconProps) {
+  const { color = "#fff" } = props;
   return (
     <svg
       version="1.1"
@@ -8,7 +10,7 @@ export function AppNameIcon() {
       x="0px"
       y="0px"
       viewBox="0 0 120.9 25"
-      style={{ fill: "#fff", width: "121px" }}
+      style={{ fill: color, width: "121px" }}
       xmlSpace="preserve"
     >
       <g id="hex__logo_Layer_1"></g>

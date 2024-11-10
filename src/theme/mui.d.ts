@@ -68,5 +68,6 @@ declare module "@mui/material/styles" {
 declare module "@mui/material/styles" {
   interface BreakpointOverrides {
     mdlg: true;
+    mobile: true;
   }
 }
