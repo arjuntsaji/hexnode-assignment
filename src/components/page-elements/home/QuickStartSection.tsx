@@ -21,6 +21,7 @@ function QuickStartSection() {
           xs: "90px",
         },
       }}
+      aria-labelledby="quick-start-section"
     >
       <Container
         display={"flex"}
@@ -65,6 +66,7 @@ function QuickStartSection() {
               fontWeight: "700",
             }}
             textAlign={"center"}
+            aria-labelledby="quick-start-heading"
           >
             Turn your devices into kiosks in a few minutes with Hexnode UEM
           </Heading>
@@ -96,6 +98,7 @@ function QuickStartSection() {
               sx={{ maxWidth: { sm: "210px", xs: "340px" } }}
               fullWidth
               onClick={onSubmit}
+              aria-label="Get Started Now"
             >
               GET STARTED NOW!
             </Button>
@@ -111,7 +114,7 @@ function QuickStartSection() {
             sx={{
               maxWidth: "100%",
             }}
-            alt="hexnode"
+            alt="Hexnode kiosk setup interface"
             src="https://www.hexnode.com/_next/image/?url=https%3A%2F%2Fstatic.hexnode.com%2Fv2%2Fassets%2Fimg%2Fads-pages%2Fbanner%2Fhexnode-kiosk.png&w=640&q=90"
           />
         </Box>

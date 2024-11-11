@@ -58,6 +58,7 @@ function KioskFeaturesOverviewSection() {
       sx={{
         pb: { mdlg: "120px", xs: "60px" },
       }}
+      aria-labelledby="kiosk-features-heading"
     >
       <Container>
         <Stack
@@ -81,6 +82,7 @@ function KioskFeaturesOverviewSection() {
               mx: "auto",
             }}
             textAlign={"center"}
+            id="kiosk-features-heading"
           >
             What additional possibilities does the Kiosk mode offer?
           </Heading>
@@ -88,6 +90,7 @@ function KioskFeaturesOverviewSection() {
             display={"flex"}
             justifyContent={"space-between"}
             alignItems={"center"}
+            aria-live="polite"
           >
             <Box
               sx={{
@@ -170,6 +173,7 @@ function KioskFeaturesOverviewSection() {
                       sx={{
                         objectFit: "contain",
                       }}
+                      alt="Tick icon"
                     />
                   </Box>
                   <Box
@@ -190,7 +194,7 @@ function KioskFeaturesOverviewSection() {
                 </Box>
               </Box>
             </Box>
-            <Stack flex={1}>
+            <Stack flex={1} role="tablist" aria-label="Accordion tabs">
               {AccordionData.map((data, index) => {
                 return (
                   <Stack
@@ -232,7 +236,8 @@ function KioskFeaturesOverviewSection() {
                           maxWidth="100%"
                           height="auto"
                           src={AccordionData[activeAccordion ?? 0]?.imageSrc}
-                        ></Box>
+                          alt={data.label}
+                        />
                       </Box>
                     </Box>
                     <Heading
@@ -246,6 +251,16 @@ function KioskFeaturesOverviewSection() {
                       onClick={() => {
                         setActiveAccordion(index);
                       }}
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter" || e.key === " ") {
+                          setActiveAccordion(index);
+                          e.preventDefault();
+                        }
+                      }}
+                      role="tab"
+                      id={`tab-${index}`}
+                      aria-selected={activeAccordion === index}
+                      tabIndex={0}
                     >
                       {data.label}
                     </Heading>
@@ -262,6 +277,8 @@ function KioskFeaturesOverviewSection() {
                         },
                         overflow: "hidden",
                       }}
+                      role="tabpanel"
+                      aria-labelledby={`tab-${index}`}
                     >
                       <Stack>
                         <Box

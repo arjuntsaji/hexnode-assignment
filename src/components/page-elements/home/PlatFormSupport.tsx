@@ -4,13 +4,32 @@ import Container from "../../ui/container/Container";
 import Heading from "../../ui/heading/Heading";
 
 const PlatFormsList = [
-  "https://static.hexnode.com/v2/assets/img/ads-pages/platform/android.svg",
-  "https://static.hexnode.com/v2/assets/img/ads-pages/platform/windows.svg",
-  "https://static.hexnode.com/v2/assets/img/ads-pages/platform/ios.svg",
-  "https://static.hexnode.com/v2/assets/img/ads-pages/platform/android-tv.svg",
-  "https://static.hexnode.com/v2/assets/img/ads-pages/platform/apple-tv.svg",
-  "https://www.hexnode.com/_next/image/?url=https%3A%2F%2Fstatic.hexnode.com%2Fv2%2Fassets%2Fimg%2Fads-pages%2Fplatform%2Famazon-fire.png&w=256&q=100",
+  {
+    src: "https://static.hexnode.com/v2/assets/img/ads-pages/platform/android.svg",
+    alt: "Android platform logo",
+  },
+  {
+    src: "https://static.hexnode.com/v2/assets/img/ads-pages/platform/windows.svg",
+    alt: "Windows platform logo",
+  },
+  {
+    src: "https://static.hexnode.com/v2/assets/img/ads-pages/platform/ios.svg",
+    alt: "iOS platform logo",
+  },
+  {
+    src: "https://static.hexnode.com/v2/assets/img/ads-pages/platform/android-tv.svg",
+    alt: "Android TV platform logo",
+  },
+  {
+    src: "https://static.hexnode.com/v2/assets/img/ads-pages/platform/apple-tv.svg",
+    alt: "Apple TV platform logo",
+  },
+  {
+    src: "https://www.hexnode.com/_next/image/?url=https%3A%2F%2Fstatic.hexnode.com%2Fv2%2Fassets%2Fimg%2Fads-pages%2Fplatform%2Famazon-fire.png&w=256&q=100",
+    alt: "Amazon Fire platform logo",
+  },
 ];
+
 function PlatFormSupport() {
   return (
     <Box
@@ -26,12 +45,23 @@ function PlatFormSupport() {
         alignItems: "center",
       }}
       component={"section"}
+      aria-labelledby="platform-support-heading"
     >
       <Container>
-        <Heading variant="h2" sx={{ mb: { sm: "60px", xs: "40px" } }}>
+        <Heading
+          variant="h2"
+          sx={{ mb: { sm: "60px", xs: "40px" } }}
+          id="platform-support-heading"
+        >
           Platforms supported
         </Heading>
-        <Box display={"flex"} alignItems={"center"} flexWrap={"wrap"}>
+        <Box
+          display={"flex"}
+          alignItems={"center"}
+          flexWrap={"wrap"}
+          role="list"
+          aria-label="Supported platforms list"
+        >
           {PlatFormsList.map((platform, index) => {
             return (
               <Box
@@ -75,7 +105,8 @@ function PlatFormSupport() {
                       objectFit: "contain",
                       width: "100%",
                     }}
-                    src={platform}
+                    src={platform.src}
+                    alt={platform.alt}
                   />
                 </Box>
               </Box>

@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box, BoxProps, Typography } from "@mui/material";
 import React, { MouseEvent, useEffect, useRef, useState } from "react";
 import TabPanel from "./TabPanel";
 
@@ -7,12 +7,13 @@ function Tabs({
   handleChange,
   tabItems = [],
   children,
+  ...others
 }: {
   tabValue: number;
   handleChange: (tabValue: number) => void;
   tabItems: { label: string; value: number }[];
   children?: React.ReactNode;
-}) {
+} & BoxProps) {
   const [indicator, setIndicator] = useState({ offset: 0, width: 0 });
   const ulRef = useRef<HTMLUListElement>(null);
   const scrollRef = useRef<HTMLElement>(null);
@@ -43,14 +44,17 @@ function Tabs({
   return (
     <>
       <Box
+        {...others}
         sx={{
           overflowX: "scroll",
           scrollbarWidth: "none",
           scrollBehavior: "smooth",
           width: "100%",
           border: (theme) => `1px solid ${theme.hexnode.colors.bodyLightGrey}`,
+          ...others.sx,
         }}
         ref={scrollRef}
+        aria-labelledby="tabs"
       >
         <Box
           display={"flex"}
@@ -110,6 +114,16 @@ function Tabs({
                 },
                 transition: "all .4s cubic-bezier(0.4, 0, 0.2, 1)",
               }}
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  handleTabClick(item.value ?? index, e.currentTarget);
+                  e.preventDefault();
+                }
+              }}
+              aria-selected={tabValue === item.value}
+              role="tab"
+              aria-label={`tab-${index + 1}`}
             >
               <Box
                 display={"flex"}

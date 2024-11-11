@@ -31,6 +31,8 @@ function IndustryRecognition() {
         py: { md: "30px" },
       }}
       component={"section"}
+      role="region"
+      aria-labelledby="industry-recognition-title"
     >
       <Container>
         <Box
@@ -86,6 +88,10 @@ function IndustryRecognition() {
                   display={"flex"}
                   flexDirection={"column"}
                   maxWidth={"340px"}
+                  href="#"
+                  role="link"
+                  aria-label={`Industry recognition for ${industry.label}`}
+                  tabIndex={0}
                 >
                   <Box
                     maxWidth={"156px"}
@@ -102,6 +108,7 @@ function IndustryRecognition() {
                       }}
                       width={"100%"}
                       color={"transparent"}
+                      alt={industry.label}
                     />
                   </Box>
                   <Box
@@ -112,6 +119,7 @@ function IndustryRecognition() {
                     sx={{
                       textAlign: { md: "left", xs: "center" },
                     }}
+                    aria-describedby={`industry-label-${industry?.label}`}
                   >
                     {industry?.label}
                   </Box>
@@ -124,6 +132,7 @@ function IndustryRecognition() {
                     }}
                     bgcolor={"hsla(0, 0%, 100%, .2)"}
                     flexBasis={"1px"}
+                    aria-hidden="true"
                   ></Box>
                 )}
               </>

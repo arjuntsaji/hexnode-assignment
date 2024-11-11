@@ -4,14 +4,36 @@ import Container from "../../ui/container/Container";
 import Slider from "react-slick";
 
 const ClientList = [
-  "https://static.hexnode.com/v2/assets/img/logos/dark-logo/polaris.svg",
-  "https://static.hexnode.com/v2/assets/img/logos/dark-logo/gorillas.svg",
-  "https://static.hexnode.com/v2/assets/img/logos/dark-logo/wolt.svg",
-  "https://static.hexnode.com/v2/assets/img/logos/dark-logo/marriott-intl.svg",
-  "https://static.hexnode.com/v2/assets/img/logos/dark-logo/merck.svg",
-  "https://static.hexnode.com/v2/assets/img/logos/dark-logo/costco.svg",
-  "https://static.hexnode.com/v2/assets/img/logos/dark-logo/saic.svg",
+  {
+    url: "https://static.hexnode.com/v2/assets/img/logos/dark-logo/polaris.svg",
+    alt: "Polaris logo",
+  },
+  {
+    url: "https://static.hexnode.com/v2/assets/img/logos/dark-logo/gorillas.svg",
+    alt: "Gorillas logo",
+  },
+  {
+    url: "https://static.hexnode.com/v2/assets/img/logos/dark-logo/wolt.svg",
+    alt: "Wolt logo",
+  },
+  {
+    url: "https://static.hexnode.com/v2/assets/img/logos/dark-logo/marriott-intl.svg",
+    alt: "Marriott International logo",
+  },
+  {
+    url: "https://static.hexnode.com/v2/assets/img/logos/dark-logo/merck.svg",
+    alt: "Merck logo",
+  },
+  {
+    url: "https://static.hexnode.com/v2/assets/img/logos/dark-logo/costco.svg",
+    alt: "Costco logo",
+  },
+  {
+    url: "https://static.hexnode.com/v2/assets/img/logos/dark-logo/saic.svg",
+    alt: "SAIC logo",
+  },
 ];
+
 function ClientShowcase() {
   const settings = {
     infinite: true,
@@ -39,7 +61,7 @@ function ClientShowcase() {
       component={"section"}
     >
       <Container>
-        <Slider {...settings} arrows={false}>
+        <Slider {...settings} arrows={false} aria-label="Client logos carousel">
           {ClientList.map((client, index) => {
             return (
               <Box
@@ -53,7 +75,11 @@ function ClientShowcase() {
                   },
                 }}
               >
-                <Box component={"img"} src={client} />
+                <Box
+                  component={"img"}
+                  src={client.url}
+                  alt={`Logo of client ${client.alt}`}
+                />
               </Box>
             );
           })}

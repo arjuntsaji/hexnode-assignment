@@ -70,6 +70,7 @@ function FreeTrialSection() {
                       mt: { md: "0", xs: "15px" },
                       height: "53px",
                     }}
+                    aria-label="Get started button"
                   >
                     GET STARTED
                   </Button>
@@ -98,6 +99,8 @@ function FreeTrialSection() {
                     },
                   }}
                   pl={"4px"}
+                  href="#request-demo"
+                  aria-label="Request a demo link"
                 >
                   <Box
                     component={"span"}

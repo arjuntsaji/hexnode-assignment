@@ -151,6 +151,8 @@ function KioskModeSection() {
       }}
       textAlign={"center"}
       component={"section"}
+      aria-role="region"
+      aria-labelledby="kiosk-mode-section-heading"
     >
       <Container>
         <Stack
@@ -164,6 +166,7 @@ function KioskModeSection() {
             mx={"auto"}
             fontFamily={"inherit"}
             letterSpacing={"auto"}
+            aria-describedby="kiosk-mode-section-description"
           >
             Specific kiosk modes for unique use cases
           </Typography>
@@ -179,12 +182,15 @@ function KioskModeSection() {
               tabItems={TabItems}
               handleChange={handleTabClick}
               tabValue={tabValue ?? 0}
+              aria-labelledby="kiosk-tabs"
             >
               {TabPanelData?.map((data) => {
                 return (
                   <Tabs.TabPanel
                     currentTabValue={tabValue ?? 0}
                     value={data.value}
+                    aria-labelledby={`tab-panel-${data.value}`}
+                    aria-role="tabpanel"
                   >
                     <Box
                       display={"flex"}
@@ -224,6 +230,7 @@ function KioskModeSection() {
                                 sx={{
                                   listStyleType: "none",
                                 }}
+                                aria-labelledby={`item-${item.label}`}
                               >
                                 <Box position={"relative"}>
                                   <Box
@@ -251,6 +258,7 @@ function KioskModeSection() {
                                     sx={{
                                       pl: { sm: "30px", xs: "25px" },
                                     }}
+                                    id={`item-${item.label}`}
                                   >
                                     {item.label}
                                   </Paragraph>
@@ -286,6 +294,8 @@ function KioskModeSection() {
                                 height: "auto",
                               }}
                               src={data.imageUrl}
+                              alt={data.label}
+                              aria-labelledby={`image-${data.label}`}
                             ></Box>
                           </Box>
                         </Box>
@@ -304,6 +314,8 @@ function KioskModeSection() {
                 xs: "initial",
               },
             }}
+            role="region"
+            aria-labelledby="kiosk-tab-section-heading"
           >
             {TabPanelData?.map((tabPanelData, index) => {
               const tabData = TabItems?.find(
@@ -335,6 +347,12 @@ function KioskModeSection() {
                         return null;
                       });
                     }}
+                    role="button"
+                    aria-expanded={
+                      tabValue === tabPanelData.value ? "true" : "false"
+                    }
+                    aria-controls={`tabpanel-${tabPanelData.value}`}
+                    aria-labelledby={`tab-${tabPanelData.value}`}
                   >
                     <Box
                       component={"span"}
@@ -372,6 +390,7 @@ function KioskModeSection() {
                           width={20}
                           height={20}
                           viewBox="0 0 20 20"
+                          role="presentation"
                         >
                           <g id="Arrow" transform="translate(-901 -5212)">
                             <rect
@@ -415,6 +434,11 @@ function KioskModeSection() {
                       transitionProperty: "all",
                     }}
                     overflow={"hidden"}
+                    role="tabpanel"
+                    aria-labelledby={`tab-${tabPanelData.value}`}
+                    aria-hidden={
+                      tabValue !== tabPanelData.value ? "true" : "false"
+                    }
                   >
                     <Box
                       textAlign={"left"}
@@ -454,6 +478,7 @@ function KioskModeSection() {
                               sx={{
                                 listStyleType: "none",
                               }}
+                              role="listitem"
                             >
                               <Box position={"relative"}>
                                 <Box
@@ -522,6 +547,8 @@ function KioskModeSection() {
                             src={
                               "https://www.hexnode.com/_next/image/?url=https%3A%2F%2Fstatic.hexnode.com%2Fv2%2Fassets%2Fimg%2Fads-pages%2Fhexnode-kiosk%2Fsingle-app-kios-image.jpg&w=640&q=100"
                             }
+                            alt={tabPanelData?.label}
+                            aria-labelledby={`image-${tabPanelData.value}`}
                           ></Box>
                         </Box>
                       </Box>

@@ -102,6 +102,7 @@ function HexnodeValueCard() {
                     isLast,
                   }));
                 }}
+                aria-live="polite"
               >
                 {sliderData.map((data, index) => {
                   return (
@@ -110,6 +111,7 @@ function HexnodeValueCard() {
                       display={"block"}
                       maxHeight={"100%"}
                       key={index}
+                      aria-labelledby={`testimonial-${index}`}
                     >
                       <Box
                         display={"flex"}
@@ -163,6 +165,7 @@ function HexnodeValueCard() {
                               borderBottomLeftRadius: "10px",
                             }}
                             src={data?.profileImageUrl}
+                            alt={`${data.name} profile image`}
                           />
                         </Box>
                         <Box
@@ -389,6 +392,7 @@ function HexnodeValueCard() {
                       sliderRef?.current?.slickPrev();
                     }
                   }}
+                  aria-live="polite"
                 >
                   <Box
                     alt="previous arrow"
@@ -464,6 +468,8 @@ function PrevArrow(props: any) {
         },
       }}
       {...(!status?.isFirst && { onClick })}
+      aria-label={`Previous Item`}
+      aria-disabled={status?.isFirst}
     >
       <Box
         alt="previous arrow"
@@ -502,6 +508,8 @@ function NextArrow(props: any) {
         },
       }}
       {...(!status?.isLast && { onClick })}
+      aria-label={`Next Item`}
+      aria-disabled={status?.isLast}
     >
       <Box
         alt="previous arrow"
