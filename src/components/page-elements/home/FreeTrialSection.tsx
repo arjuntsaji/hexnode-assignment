@@ -32,7 +32,7 @@ function FreeTrialSection() {
             sx={{
               m: "auto",
               fontWeight: 700,
-              fontSize: { xs: "30px", md: "38px" },
+              fontSize: { xs: "30px", md: "42px" },
               lineHeight: { xs: "38px", md: 1.3 },
               mb: "20px",
               textAlign: "center",
@@ -69,6 +69,10 @@ function FreeTrialSection() {
                       maxWidth: { md: "195px", xs: "325px", width: "100%" },
                       mt: { md: "0", xs: "15px" },
                       height: "53px",
+                      fontSize: "17px",
+                      fontWeight: "400",
+                      lineHeight: "24px",
+                      textTransform: "uppercase",
                     }}
                     aria-label="Get started button"
                   >
@@ -86,7 +90,6 @@ function FreeTrialSection() {
                 lineHeight={"24px"}
                 fontWeight={"500"}
                 textAlign={"center"}
-                pt={"10px"}
               >
                 No credit cards required.
                 <Box

@@ -1,4 +1,5 @@
 import { Box, BoxProps, keyframes, styled } from "@mui/material";
+import { memo } from "react";
 
 type Direction = "left" | "right" | "top" | "bottom";
 
@@ -27,7 +28,7 @@ const StyledAnimatedBox = styled(Box, {
   animation: `${fadeIn(direction)} .6s ease both running`,
 }));
 
-export default function AnimatedBox({
+function AnimatedBox({
   direction = "left",
   children,
   ...others
@@ -38,3 +39,4 @@ export default function AnimatedBox({
     </StyledAnimatedBox>
   );
 }
+export default memo(AnimatedBox);

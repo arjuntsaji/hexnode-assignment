@@ -325,9 +325,9 @@ function KioskModeSection() {
                 <>
                   <Stack
                     sx={{
-                      borderBottomWidth: "1px",
                       borderColor: "rgba(0,0,0,.1)",
                       borderWidth: "1px",
+                      borderBottomWidth: 0,
                       borderRadius: "4px",
                       borderStyle: "solid",
                       overflow: "hidden",
@@ -536,6 +536,9 @@ function KioskModeSection() {
                             maxWidth: "100%",
                             width: "auto",
                             position: "relative",
+                            height: {
+                              sm: "220px",
+                            },
                           }}
                         >
                           <Box

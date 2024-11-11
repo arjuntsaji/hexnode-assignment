@@ -45,9 +45,13 @@ export default function AppBar(props: Props) {
         py={theme.hexnode.spacing.l}
         px={"30px"}
         position={"relative"}
+        role="presentation"
       >
         <Box position={"absolute"} top={"26px"} right={"30px"}>
-          <IconButton onClick={handleDrawerToggle}>
+          <IconButton
+            onClick={handleDrawerToggle}
+            aria-label="Close navigation menu"
+          >
             <CloseIcon />
           </IconButton>
         </Box>
@@ -57,12 +61,39 @@ export default function AppBar(props: Props) {
         sx={{
           borderColor: theme.hexnode.colors.dividerBgColor,
         }}
+        role="separator"
       />
       <Stack px={"30px"} pt={"30px"} pb={"20px"} gap={"20px"}>
-        <Button variant="contained" color="error">
+        <Button
+          variant="contained"
+          color="error"
+          aria-label="Start 14 day free trial"
+        >
           14 DAY FREE TRIAL
         </Button>
-        <Box>Login</Box>
+        <Box
+          role="link"
+          component={"a"}
+          tabIndex={0}
+          aria-label="Login"
+          href="#login"
+          sx={{
+            cursor: "pointer",
+            display: "block",
+            fontSize: "16px",
+            lineHeight: "24px",
+            whiteSpace: "nowrap",
+            padding: "10px 30px",
+            minHeight: "48px",
+            borderRadius: "3px",
+            textAlign: "center",
+            backgroundColor: "#fff",
+            color: "#020a19",
+            fontWeight: "500",
+          }}
+        >
+          Login
+        </Box>
       </Stack>
     </Box>
   );

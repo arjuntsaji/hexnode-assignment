@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import Container from "../../ui/container/Container";
 import Heading from "../../ui/heading/Heading";
 import { Box, Stack } from "@mui/material";
@@ -11,6 +11,7 @@ const AccordionData = [
       "Deploy kiosk-enabled devices straight out of the box. Flash a custom Android Enterprise, Samsung Knox or ROM with Hexnode App on the devices by collaborating with OEM vendors who provide specially configured ROMs.",
     imageSrc:
       "https://www.hexnode.com/_next/image/?url=https%3A%2F%2Fstatic.hexnode.com%2Fv2%2Fassets%2Fimg%2Fads-pages%2Fkiosk-mode%2F2x%2Feffortless-kiosk-deployement-image.jpg&w=640&q=80",
+    feature: "Zero Touch Kiosk",
   },
   {
     label: "Customized interface for brand visibility",
@@ -18,6 +19,7 @@ const AccordionData = [
       "Create a locked-down environment with customized interface. Maximize brand visibility and leave a lasting impression by showcasing products, services and key messages directly to users through the customized interface.",
     imageSrc:
       "https://www.hexnode.com/_next/image/?url=https%3A%2F%2Fstatic.hexnode.com%2Fv2%2Fassets%2Fimg%2Fads-pages%2Fkiosk-mode%2F2x%2Fcustomized-interface-image.jpg&w=640&q=80",
+    feature: "Brand visibility",
   },
   {
     label: "What more can you do with Hexnode kiosk?",
@@ -25,6 +27,7 @@ const AccordionData = [
       "Ensure compliance of your devices by remotely deploying the latest OS version while the device is still in kiosk mode. Prevent your data from falling into the wrong hands even in case of device loss/theft with the various remote management features",
     imageSrc:
       "https://www.hexnode.com/_next/image/?url=https%3A%2F%2Fstatic.hexnode.com%2Fv2%2Fassets%2Fimg%2Fads-pages%2Fkiosk-mode%2F2x%2Fpower-up-protection-image.jpg&w=640&q=80",
+    feature: "Data security",
   },
   {
     label: "Secure and update your app ecosystem",
@@ -32,6 +35,7 @@ const AccordionData = [
       "Streamline the deployment and management on apps on your kiosk devices. Save your time and effort, ensure security and improve your efficiency using Hexnode’s silent app installation and update features.",
     imageSrc:
       "https://www.hexnode.com/_next/image/?url=https%3A%2F%2Fstatic.hexnode.com%2Fv2%2Fassets%2Fimg%2Fads-pages%2Fkiosk-mode%2F2x%2Fsecure-app-ecosystem.jpg&w=640&q=80",
+    feature: "App management",
   },
   {
     label: "Provide an easy-to-use interface for end-users",
@@ -39,6 +43,7 @@ const AccordionData = [
       "Give your end-users the power to control their devices without overwhelming them with options. An intuitive interface to let them access only the essential settings they need. Make it easy for them to unlock the full potential of your devices hassle-free.",
     imageSrc:
       "https://www.hexnode.com/_next/image/?url=https%3A%2F%2Fstatic.hexnode.com%2Fv2%2Fassets%2Fimg%2Fads-pages%2Fkiosk-mode%2F2x%2Feasy-to-use-interface-image.jpg&w=640&q=80",
+    feature: "Easy to use interface",
   },
 ];
 
@@ -52,6 +57,7 @@ function KioskFeaturesOverviewSection() {
   useEffect(() => {
     prevActiveAccordion.current = activeAccordion;
   }, [activeAccordion]);
+
   return (
     <Box
       component={"section"}
@@ -116,6 +122,7 @@ function KioskFeaturesOverviewSection() {
                 }}
                 onMouseEnter={() => setHover(true)}
                 onMouseLeave={() => setHover(false)}
+                position={"relative"}
               >
                 <AnimatedBox
                   key={AccordionData[activeAccordion ?? 0]?.imageSrc}
@@ -127,69 +134,69 @@ function KioskFeaturesOverviewSection() {
                     src={AccordionData[activeAccordion ?? 0]?.imageSrc}
                   />
                 </AnimatedBox>
-              </Box>
-              <Box
-                sx={{
-                  position: "absolute",
-                  right: "0",
-                  top: hover ? "19%" : "20%",
-                  pl: "25px",
-                  py: "15px",
-                  overflow: "hidden",
-                  transition: "all 0.3s ease-in-out",
-                }}
-                onMouseEnter={() => setHover(true)}
-                onMouseLeave={() => setHover(false)}
-              >
                 <Box
-                  component={"p"}
-                  m={0}
                   sx={{
-                    backgroundColor: "hsla(0,0%,100%,.9)",
-                    pl: {
-                      sm: "50px",
-                    },
-                    pr: "30px",
+                    position: "absolute",
+                    right: "0",
+                    top: hover ? "19%" : "20%",
+                    pl: "25px",
                     py: "15px",
-                    border: "1px solid rgb(242 242 242)",
-                    borderRadius: "8px",
+                    overflow: "hidden",
+                    transition: "all 0.3s ease-in-out",
                   }}
-                  position={"relative"}
+                  onMouseEnter={() => setHover(true)}
+                  onMouseLeave={() => setHover(false)}
                 >
                   <Box
-                    component={"span"}
-                    position={"absolute"}
-                    top={"17px"}
+                    component={"p"}
+                    m={0}
                     sx={{
-                      left: {
-                        sm: "15px",
-                        xs: "8px",
+                      backgroundColor: "hsla(0,0%,100%,.9)",
+                      pl: {
+                        sm: "50px",
                       },
+                      pr: "30px",
+                      py: "15px",
+                      border: "1px solid rgb(242 242 242)",
+                      borderRadius: "8px",
                     }}
+                    position={"relative"}
                   >
                     <Box
-                      component={"img"}
-                      src="https://static.hexnode.com/v2/assets/img/ads-pages/ads-tick-green.svg"
+                      component={"span"}
+                      position={"absolute"}
+                      top={"17px"}
                       sx={{
-                        objectFit: "contain",
+                        left: {
+                          sm: "15px",
+                          xs: "8px",
+                        },
                       }}
-                      alt="Tick icon"
-                    />
-                  </Box>
-                  <Box
-                    component={"span"}
-                    sx={{
-                      m: 0,
-                      lineHeight: { sm: "26px", xs: "22px" },
-                      fontSize: {
-                        sm: "18px",
-                        xs: "16px",
-                      },
-                      fontWeight: "600",
-                      color: "rgb(51 51 51)",
-                    }}
-                  >
-                    Zero touch kiosk
+                    >
+                      <Box
+                        component={"img"}
+                        src="https://static.hexnode.com/v2/assets/img/ads-pages/ads-tick-green.svg"
+                        sx={{
+                          objectFit: "contain",
+                        }}
+                        alt="Tick icon"
+                      />
+                    </Box>
+                    <Box
+                      component={"span"}
+                      sx={{
+                        m: 0,
+                        lineHeight: { sm: "26px", xs: "22px" },
+                        fontSize: {
+                          sm: "18px",
+                          xs: "16px",
+                        },
+                        fontWeight: "600",
+                        color: "rgb(51 51 51)",
+                      }}
+                    >
+                      {AccordionData[activeAccordion ?? 0]?.feature}
+                    </Box>
                   </Box>
                 </Box>
               </Box>
@@ -237,7 +244,73 @@ function KioskFeaturesOverviewSection() {
                           height="auto"
                           src={AccordionData[activeAccordion ?? 0]?.imageSrc}
                           alt={data.label}
+                          sx={{
+                            borderRadius: "10px",
+                          }}
                         />
+                      </Box>
+                      <Box
+                        sx={{
+                          position: "absolute",
+                          right: "-20px",
+                          top: "80%",
+                          pl: "25px",
+                          py: "15px",
+                          overflow: "hidden",
+                          transition: "all 0.3s ease-in-out",
+                          transform: `
+                                      translate(0, -50%)
+                                      rotate(0)
+                                      skewX(0)
+                                      skewY(0)
+                                      scaleX(1)
+                                      scaleY(1)
+                                    `,
+                        }}
+                      >
+                        <Box
+                          component={"p"}
+                          m={0}
+                          sx={{
+                            backgroundColor: "hsla(0,0%,100%,.9)",
+                            border: "1px solid rgb(242 242 242)",
+                            borderRadius: "5px",
+                            pl: "30px",
+                            py: "4px",
+                            pr: "15px",
+                          }}
+                          position={"relative"}
+                        >
+                          <Box
+                            component={"span"}
+                            position={"absolute"}
+                            top={"7px"}
+                            left={"8px"}
+                            height={"15px"}
+                          >
+                            <Box
+                              component={"img"}
+                              src="https://static.hexnode.com/v2/assets/img/ads-pages/ads-tick-green.svg"
+                              sx={{
+                                objectFit: "contain",
+                                maxHeight: "100%",
+                              }}
+                              alt="Tick icon"
+                            />
+                          </Box>
+                          <Box
+                            component={"span"}
+                            sx={{
+                              m: 0,
+                              lineHeight: "15px",
+                              fontSize: "12px",
+                              fontWeight: "600",
+                              color: "rgb(2 10 25)",
+                            }}
+                          >
+                            {data?.feature}
+                          </Box>
+                        </Box>
                       </Box>
                     </Box>
                     <Heading
