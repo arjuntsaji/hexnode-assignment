@@ -40,6 +40,7 @@ function AppThemeProvider({
         headerBgColor: resolveCssVariable("--hex-header-bg-color"),
         dividerBgColor: resolveCssVariable("--hex-divider-bg-color"),
         textLight: resolveCssVariable("--hex-text-light"),
+        bodyLightGrey: resolveCssVariable("--hex-body-light-grey"),
       },
       spacing: Spacing,
     },

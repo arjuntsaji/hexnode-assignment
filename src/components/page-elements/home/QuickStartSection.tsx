@@ -3,11 +3,16 @@ import { Box, Button, Stack } from "@mui/material";
 import Input from "../../ui/input/Input";
 import Container from "../../ui/container/Container";
 import Heading from "../../ui/heading/Heading";
+import { useState } from "react";
 
 function QuickStartSection() {
+  const [email, setEmail] = useState("");
+  const onSubmit = () => {
+    console.log(email, "email");
+  };
   return (
     <Box
-      bgcolor={"rgb(2 10 25)"}
+      bgcolor={(theme) => theme.hexnode.colors.headerBgColor}
       component={"section"}
       sx={{
         pb: { xs: "30px" },
@@ -49,6 +54,15 @@ function QuickStartSection() {
                 xs: "center",
                 sm: "inherit",
               },
+              lineHeight: {
+                mdlg: "53px",
+                xs: "44px",
+              },
+              fontSize: {
+                mdlg: "42px",
+                xs: "34px",
+              },
+              fontWeight: "700",
             }}
             textAlign={"center"}
           >
@@ -70,7 +84,10 @@ function QuickStartSection() {
             }}
           >
             <Box width={"100%"} sx={{ maxWidth: { sm: "280px", xs: "340px" } }}>
-              <Input placeholder="Your Work Email" />
+              <Input
+                placeholder="Your Work Email"
+                onChange={(e) => setEmail(e.target.value)}
+              />
             </Box>
 
             <Button
@@ -78,6 +95,7 @@ function QuickStartSection() {
               color="error"
               sx={{ maxWidth: { sm: "210px", xs: "340px" } }}
               fullWidth
+              onClick={onSubmit}
             >
               GET STARTED NOW!
             </Button>

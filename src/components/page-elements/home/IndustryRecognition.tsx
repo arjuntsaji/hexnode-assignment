@@ -72,7 +72,9 @@ function IndustryRecognition() {
                     position: "relative",
                     top: 0,
                     ":hover": {
-                      top: "-5px",
+                      top: {
+                        md: "-5px",
+                      },
                     },
                     transition: "all 0.3s ease-out",
                     alignItems: {

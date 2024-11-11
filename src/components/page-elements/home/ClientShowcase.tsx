@@ -35,7 +35,7 @@ function ClientShowcase() {
           xs: "10px",
         },
       }}
-      bgcolor={"rgb(247 247 247)"}
+      bgcolor={(theme) => theme.hexnode.colors.bodyLightGrey}
       component={"section"}
     >
       <Container>

@@ -53,275 +53,287 @@ function KioskFeaturesOverviewSection() {
     prevActiveAccordion.current = activeAccordion;
   }, [activeAccordion]);
   return (
-    <Container>
-      <Stack
-        sx={{
-          gap: {
-            md: "40px",
-          },
-        }}
-      >
-        <Heading
-          variant="h2"
+    <Box
+      component={"section"}
+      sx={{
+        pb: { mdlg: "120px", xs: "60px" },
+      }}
+    >
+      <Container>
+        <Stack
           sx={{
-            maxWidth: {
-              sm: "800px",
-              xs: "340px",
+            gap: {
+              md: "40px",
             },
-            pb: {
-              xs: "20px",
-              md: "20px",
-            },
-            mx: "auto",
           }}
-          textAlign={"center"}
         >
-          What additional possibilities does the Kiosk mode offer?
-        </Heading>
-        <Box display={"flex"} justifyContent={"space-between"}>
-          <Box
+          <Heading
+            variant="h2"
             sx={{
-              maxWidth: { md: "545px" },
-              width: { md: "50%" },
-              maxHeight: "545px",
-              mr: "20px",
-              position: "relative",
-              display: {
-                mdlg: "initial",
-                xs: "none",
+              maxWidth: {
+                sm: "800px",
+                xs: "340px",
               },
+              pb: {
+                xs: "20px",
+                md: "20px",
+              },
+              mx: "auto",
             }}
-            flex={1}
+            textAlign={"center"}
+          >
+            What additional possibilities does the Kiosk mode offer?
+          </Heading>
+          <Box
+            display={"flex"}
+            justifyContent={"space-between"}
+            alignItems={"center"}
           >
             <Box
               sx={{
-                maxWidth: {
-                  md: "calc(100% - 25px)",
+                maxWidth: { md: "545px" },
+                width: { md: "50%" },
+                maxHeight: "545px",
+                mr: "20px",
+                position: "relative",
+                display: {
+                  mdlg: "initial",
+                  xs: "none",
                 },
-                borderRadius: "10px",
-                overflow: "hidden",
               }}
-              onMouseEnter={() => setHover(true)}
-              onMouseLeave={() => setHover(false)}
-            >
-              <AnimatedBox
-                key={AccordionData[activeAccordion ?? 0]?.imageSrc}
-                direction={direction}
-              >
-                <Box
-                  component={"img"}
-                  sx={{ maxWidth: "100%" }}
-                  src={AccordionData[activeAccordion ?? 0]?.imageSrc}
-                />
-              </AnimatedBox>
-            </Box>
-            <Box
-              sx={{
-                position: "absolute",
-                right: "0",
-                top: hover ? "19%" : "20%",
-                pl: "25px",
-                py: "15px",
-                overflow: "hidden",
-                transition: "all 0.3s ease-in-out",
-              }}
-              onMouseEnter={() => setHover(true)}
-              onMouseLeave={() => setHover(false)}
+              flex={1}
             >
               <Box
-                component={"p"}
-                m={0}
                 sx={{
-                  backgroundColor: "hsla(0,0%,100%,.9)",
-                  pl: {
-                    sm: "50px",
+                  maxWidth: {
+                    md: "calc(100% - 25px)",
                   },
-                  pr: "30px",
-                  py: "15px",
-                  border: "1px solid rgb(242 242 242)",
-                  borderRadius: "8px",
+                  borderRadius: "10px",
+                  overflow: "hidden",
                 }}
-                position={"relative"}
+                onMouseEnter={() => setHover(true)}
+                onMouseLeave={() => setHover(false)}
               >
-                <Box
-                  component={"span"}
-                  position={"absolute"}
-                  top={"17px"}
-                  sx={{
-                    left: {
-                      sm: "15px",
-                      xs: "8px",
-                    },
-                  }}
+                <AnimatedBox
+                  key={AccordionData[activeAccordion ?? 0]?.imageSrc}
+                  direction={direction}
                 >
                   <Box
                     component={"img"}
-                    src="https://static.hexnode.com/v2/assets/img/ads-pages/ads-tick-green.svg"
-                    sx={{
-                      objectFit: "contain",
-                    }}
+                    sx={{ maxWidth: "100%" }}
+                    src={AccordionData[activeAccordion ?? 0]?.imageSrc}
                   />
-                </Box>
+                </AnimatedBox>
+              </Box>
+              <Box
+                sx={{
+                  position: "absolute",
+                  right: "0",
+                  top: hover ? "19%" : "20%",
+                  pl: "25px",
+                  py: "15px",
+                  overflow: "hidden",
+                  transition: "all 0.3s ease-in-out",
+                }}
+                onMouseEnter={() => setHover(true)}
+                onMouseLeave={() => setHover(false)}
+              >
                 <Box
-                  component={"span"}
+                  component={"p"}
+                  m={0}
                   sx={{
-                    m: 0,
-                    lineHeight: { sm: "26px", xs: "22px" },
-                    fontSize: {
-                      sm: "18px",
-                      xs: "16px",
+                    backgroundColor: "hsla(0,0%,100%,.9)",
+                    pl: {
+                      sm: "50px",
                     },
-                    fontWeight: "600",
-                    color: "rgb(51 51 51)",
+                    pr: "30px",
+                    py: "15px",
+                    border: "1px solid rgb(242 242 242)",
+                    borderRadius: "8px",
                   }}
+                  position={"relative"}
                 >
-                  Zero touch kiosk
+                  <Box
+                    component={"span"}
+                    position={"absolute"}
+                    top={"17px"}
+                    sx={{
+                      left: {
+                        sm: "15px",
+                        xs: "8px",
+                      },
+                    }}
+                  >
+                    <Box
+                      component={"img"}
+                      src="https://static.hexnode.com/v2/assets/img/ads-pages/ads-tick-green.svg"
+                      sx={{
+                        objectFit: "contain",
+                      }}
+                    />
+                  </Box>
+                  <Box
+                    component={"span"}
+                    sx={{
+                      m: 0,
+                      lineHeight: { sm: "26px", xs: "22px" },
+                      fontSize: {
+                        sm: "18px",
+                        xs: "16px",
+                      },
+                      fontWeight: "600",
+                      color: "rgb(51 51 51)",
+                    }}
+                  >
+                    Zero touch kiosk
+                  </Box>
                 </Box>
               </Box>
             </Box>
-          </Box>
-          <Stack flex={1}>
-            {AccordionData.map((data, index) => {
-              return (
-                <Stack
-                  key={index}
-                  sx={{
-                    pb: {
-                      mdlg: "25px",
-                      xs: "20px",
-                    },
-                    ...(index !== 0 && {
-                      pt: {
+            <Stack flex={1}>
+              {AccordionData.map((data, index) => {
+                return (
+                  <Stack
+                    key={index}
+                    sx={{
+                      pb: {
                         mdlg: "25px",
                         xs: "20px",
                       },
-                    }),
-                    borderBottom: "1px solid rgb(247 247 247)",
-                  }}
-                >
-                  <Box
-                    position={"relative"}
-                    sx={{
-                      maxWidth: "calc(320px + 15px)",
-                      display: {
-                        mdlg: "none",
-                        xs: activeAccordion === index ? "initial" : "none",
-                        // xs: "none",
-                      },
+                      ...(index !== 0 && {
+                        pt: {
+                          mdlg: "25px",
+                          xs: "20px",
+                        },
+                      }),
+                      borderBottom: (theme) =>
+                        `1px solid ${theme.hexnode.colors.bodyLightGrey}`,
                     }}
-                    borderRadius={"10px"}
-                    my={"20px"}
-                    mx={"auto"}
-                    display={"block"}
                   >
-                    <Box maxWidth={"320px"}>
-                      <Box
-                        component={"img"}
-                        maxHeight={"320px"}
-                        maxWidth="100%"
-                        height="auto"
-                        src={AccordionData[activeAccordion ?? 0]?.imageSrc}
-                      ></Box>
+                    <Box
+                      position={"relative"}
+                      sx={{
+                        maxWidth: "calc(320px + 15px)",
+                        display: {
+                          mdlg: "none",
+                          xs: activeAccordion === index ? "initial" : "none",
+                          // xs: "none",
+                        },
+                      }}
+                      borderRadius={"10px"}
+                      my={"20px"}
+                      mx={"auto"}
+                      display={"block"}
+                    >
+                      <Box maxWidth={"320px"}>
+                        <Box
+                          component={"img"}
+                          maxHeight={"320px"}
+                          maxWidth="100%"
+                          height="auto"
+                          src={AccordionData[activeAccordion ?? 0]?.imageSrc}
+                        ></Box>
+                      </Box>
                     </Box>
-                  </Box>
-                  <Heading
-                    variant="h3"
-                    sx={{
-                      fontSize: { xs: "24px", sm: "26px" },
-                      lineHeight: { xs: "36px", sm: "40px" },
-                      cursor: "pointer",
-                      m: 0,
-                    }}
-                    onClick={() => {
-                      setActiveAccordion(index);
-                    }}
-                  >
-                    {data.label}
-                  </Heading>
-                  <Box
-                    sx={{
-                      transitionProperty: "all",
-                      transitionTimingFunction: "cubic-bezier(0, 0, 0.2, 1)",
-                      transitionDuration: "0.3s",
-                      height: {
-                        xl: activeAccordion === index ? "138px" : "0px",
-                        mobile: activeAccordion === index ? "166px" : "0px",
-                        mdlg: activeAccordion === index ? "194px" : "0px",
-                        xs: activeAccordion === index ? "222px" : "0px",
-                      },
-                      overflow: "hidden",
-                    }}
-                  >
-                    <Stack>
-                      <Box
-                        component={"p"}
-                        sx={{
-                          m: 0,
-                          lineHeight: "28px",
-                          fontSize: "18px",
-                          fontWeight: "400",
-                          pt: "20px",
-                        }}
-                      >
-                        {data.content}
-                      </Box>
-                      <Box
-                        component={"a"}
-                        display={"inline-flex"}
-                        mt={"10px"}
-                        sx={{
-                          "&:hover .svg-parent": {
-                            ml: "6px",
-                          },
-                        }}
-                      >
+                    <Heading
+                      variant="h3"
+                      sx={{
+                        fontSize: { xs: "24px", sm: "26px" },
+                        lineHeight: { xs: "36px", sm: "40px" },
+                        cursor: "pointer",
+                        m: 0,
+                      }}
+                      onClick={() => {
+                        setActiveAccordion(index);
+                      }}
+                    >
+                      {data.label}
+                    </Heading>
+                    <Box
+                      sx={{
+                        transitionProperty: "all",
+                        transitionTimingFunction: "cubic-bezier(0, 0, 0.2, 1)",
+                        transitionDuration: "0.3s",
+                        height: {
+                          xl: activeAccordion === index ? "138px" : "0px",
+                          mobile: activeAccordion === index ? "166px" : "0px",
+                          mdlg: activeAccordion === index ? "194px" : "0px",
+                          xs: activeAccordion === index ? "222px" : "0px",
+                        },
+                        overflow: "hidden",
+                      }}
+                    >
+                      <Stack>
                         <Box
-                          component={"span"}
+                          component={"p"}
                           sx={{
-                            color: "rgb(221 7 53)",
-                            lineHeight: "23px",
-                            textTransform: "uppercase",
-                            fontWeight: "600",
+                            m: 0,
+                            lineHeight: "28px",
                             fontSize: "18px",
+                            fontWeight: "400",
+                            pt: "20px",
                           }}
                         >
-                          Try For Free
+                          {data.content}
                         </Box>
                         <Box
-                          ml={"4px"}
-                          display={"flex"}
-                          alignItems={"center"}
-                          justifyContent={"center"}
+                          component={"a"}
+                          display={"inline-flex"}
+                          mt={"10px"}
                           sx={{
-                            transition: "margin 0.5s ease-out",
+                            "&:hover .svg-parent": {
+                              ml: "6px",
+                            },
                           }}
-                          className="svg-parent"
                         >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="6.575"
-                            height="11.737"
-                            className="ml-[5px] translate-x-0 group-hover/tabLink:translate-x-[3px] transition-all duration-300 ease-out"
+                          <Box
+                            component={"span"}
+                            sx={{
+                              color: "rgb(221 7 53)",
+                              lineHeight: "23px",
+                              textTransform: "uppercase",
+                              fontWeight: "600",
+                              fontSize: "18px",
+                            }}
                           >
-                            <path
-                              fill="none"
-                              stroke="#dd0735"
-                              strokeLinecap="round"
-                              d="m.707.707 5.161 5.161-5.161 5.161"
-                              data-name="arrow - icon"
-                            />
-                          </svg>
+                            Try For Free
+                          </Box>
+                          <Box
+                            ml={"4px"}
+                            display={"flex"}
+                            alignItems={"center"}
+                            justifyContent={"center"}
+                            sx={{
+                              transition: "margin 0.5s ease-out",
+                            }}
+                            className="svg-parent"
+                          >
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="6.575"
+                              height="11.737"
+                              className="ml-[5px] translate-x-0 group-hover/tabLink:translate-x-[3px] transition-all duration-300 ease-out"
+                            >
+                              <path
+                                fill="none"
+                                stroke="#dd0735"
+                                strokeLinecap="round"
+                                d="m.707.707 5.161 5.161-5.161 5.161"
+                                data-name="arrow - icon"
+                              />
+                            </svg>
+                          </Box>
                         </Box>
-                      </Box>
-                    </Stack>
-                  </Box>
-                </Stack>
-              );
-            })}
-          </Stack>
-        </Box>
-      </Stack>
-    </Container>
+                      </Stack>
+                    </Box>
+                  </Stack>
+                );
+              })}
+            </Stack>
+          </Box>
+        </Stack>
+      </Container>
+    </Box>
   );
 }
 

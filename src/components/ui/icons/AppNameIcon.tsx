@@ -6,7 +6,7 @@ export function AppNameIcon(props: IconProps) {
   return (
     <svg
       version="1.1"
-      className="hex__global_nav_logo"
+      className="navLogo"
       x="0px"
       y="0px"
       viewBox="0 0 120.9 25"

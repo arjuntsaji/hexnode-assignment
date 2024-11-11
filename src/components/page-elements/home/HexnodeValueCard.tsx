@@ -38,7 +38,6 @@ function HexnodeValueCard() {
     isFirst: true,
   });
   let sliderRef = useRef<any>(null);
-  console.log(sliderRef, "sliderRefsliderRef");
 
   const settings = {
     dots: false,
@@ -62,7 +61,7 @@ function HexnodeValueCard() {
           xs: "30px",
         },
       }}
-      bgcolor={"rgb(247 247 247)"}
+      bgcolor={(theme) => theme.hexnode.colors.bodyLightGrey}
       component={"section"}
     >
       <Container>
@@ -98,8 +97,6 @@ function HexnodeValueCard() {
                   const isLast = sliderData?.length - 1 === next;
                   const isFirst = next === 0;
                   console.log(current, next, "isLast");
-                  //   console.log(isFirst, next, "isFirst");
-
                   setStatus(() => ({
                     isFirst,
                     isLast,
@@ -173,7 +170,8 @@ function HexnodeValueCard() {
                             minHeight: {
                               md: "310px",
                             },
-                            backgroundColor: "rgb(255 255 255)",
+                            backgroundColor: (theme) =>
+                              theme.hexnode.colors.textLight,
                           }}
                           display={"flex"}
                           justifyContent={"center"}
@@ -267,7 +265,8 @@ function HexnodeValueCard() {
                                 top: "-20px",
                                 position: "relative",
                                 borderRadius: "5px",
-                                backgroundColor: "rgb(247 247 247)",
+                                backgroundColor: (theme) =>
+                                  theme.hexnode.colors.bodyLightGrey,
                               }}
                             ></Box>
                             <Box
@@ -280,7 +279,8 @@ function HexnodeValueCard() {
                                   xs: "14px",
                                 },
                                 fontWeight: "700",
-                                color: "rgb(2 10 25)",
+                                color: (theme) =>
+                                  theme.hexnode.colors.headerBgColor,
                                 textAlign: {
                                   md: "left",
                                   xs: "center",
@@ -305,7 +305,8 @@ function HexnodeValueCard() {
                                     md: "auto",
                                   },
                                   fontWeight: "400",
-                                  color: "rgb(2 10 25)",
+                                  color: (theme) =>
+                                    theme.hexnode.colors.headerBgColor,
                                   maxWidth: "294px",
                                   width: "100%",
                                   textAlign: {
@@ -333,7 +334,8 @@ function HexnodeValueCard() {
                                   md: "auto",
                                 },
                                 fontWeight: "400",
-                                color: "rgb(2 10 25)",
+                                color: (theme) =>
+                                  theme.hexnode.colors.headerBgColor,
                                 maxWidth: "294px",
                                 width: "100%",
                                 textAlign: {
@@ -371,7 +373,7 @@ function HexnodeValueCard() {
                   component={"button"}
                   width={"56px"}
                   height={"56px"}
-                  bgcolor={"rgb(255 255 255)"}
+                  bgcolor={(theme) => theme.hexnode.colors.textLight}
                   borderRadius={"12px"}
                   lineHeight={"0"}
                   border={"none"}
@@ -401,7 +403,7 @@ function HexnodeValueCard() {
                   component={"button"}
                   width={"56px"}
                   height={"56px"}
-                  bgcolor={"rgb(255 255 255)"}
+                  bgcolor={(theme) => theme.hexnode.colors.textLight}
                   borderRadius={"12px"}
                   lineHeight={"0"}
                   border={"none"}
@@ -444,7 +446,7 @@ function PrevArrow(props: any) {
       width={"56px"}
       height={"56px"}
       position={"absolute"}
-      bgcolor={"rgb(255 255 255)"}
+      bgcolor={(theme) => theme.hexnode.colors.textLight}
       borderRadius={"12px"}
       lineHeight={"0"}
       bottom={"50%"}
@@ -483,7 +485,7 @@ function NextArrow(props: any) {
       width={"56px"}
       height={"56px"}
       position={"absolute"}
-      bgcolor={"rgb(255 255 255)"}
+      bgcolor={(theme) => theme.hexnode.colors.textLight}
       borderRadius={"12px"}
       lineHeight={"0"}
       right={"-80px"}

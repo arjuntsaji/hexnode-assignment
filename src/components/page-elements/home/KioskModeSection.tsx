@@ -3,8 +3,6 @@ import React, { useState } from "react";
 import Container from "../../ui/container/Container";
 import Heading from "../../ui/heading/Heading";
 import Paragraph from "../../ui/heading/Paragraph";
-
-import TabPanel from "../../ui/tabs/TabPanel";
 import Tabs from "../../ui/tabs/Tabs";
 
 const TabItems = [
@@ -160,7 +158,13 @@ function KioskModeSection() {
             gap: { sm: "60px", xs: "40px" },
           }}
         >
-          <Typography variant="h2" maxWidth={"900px"} mx={"auto"}>
+          <Typography
+            variant="h2"
+            maxWidth={"900px"}
+            mx={"auto"}
+            fontFamily={"inherit"}
+            letterSpacing={"auto"}
+          >
             Specific kiosk modes for unique use cases
           </Typography>
           <Box
@@ -175,116 +179,124 @@ function KioskModeSection() {
               tabItems={TabItems}
               handleChange={handleTabClick}
               tabValue={tabValue ?? 0}
-            />
-            {TabPanelData?.map((data) => {
-              return (
-                <TabPanel currentTabValue={tabValue ?? 0} value={data.value}>
-                  <Box
-                    display={"flex"}
-                    sx={{
-                      gap: { mdlg: "40px", xs: "0px" },
-                      mb: {
-                        mdlg: "0px",
-                        xs: "20px",
-                      },
-                      flexDirection: {
-                        mdlg: "row",
-                        xs: "column-reverse",
-                      },
-                    }}
+            >
+              {TabPanelData?.map((data) => {
+                return (
+                  <Tabs.TabPanel
+                    currentTabValue={tabValue ?? 0}
+                    value={data.value}
                   >
-                    <Stack flex={1} sx={{ gap: { mdlg: "40px", xs: "15px" } }}>
-                      <Heading variant="h3">{data.label}</Heading>
-                      <Box
-                        component={"ul"}
-                        m="0"
-                        display={"flex"}
-                        flexDirection={"column"}
-                        sx={{
-                          gap: {
-                            mdlg: "25px",
-                            xs: "10px",
-                          },
-                        }}
-                      >
-                        {data?.items?.map((item) => {
-                          return (
-                            <Box
-                              component={"li"}
-                              sx={{
-                                listStyleType: "none",
-                              }}
-                            >
-                              <Box position={"relative"}>
-                                <Box
-                                  sx={{
-                                    position: "absolute",
-                                    left: "0px",
-                                    top: "8px",
-                                  }}
-                                >
-                                  <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width="14.393"
-                                    height="10.111"
-                                  >
-                                    <path
-                                      fill="none"
-                                      stroke="#60c458"
-                                      strokeWidth={2}
-                                      d="M.697 4.107 5.45 8.718l8.247-8"
-                                      data-name="tick - icon"
-                                    />
-                                  </svg>
-                                </Box>
-                                <Paragraph
-                                  sx={{
-                                    pl: { sm: "30px", xs: "25px" },
-                                  }}
-                                >
-                                  {item.label}
-                                </Paragraph>
-                              </Box>
-                            </Box>
-                          );
-                        })}
-                      </Box>
-                    </Stack>
                     <Box
-                      flex={1}
+                      display={"flex"}
                       sx={{
-                        mb: { mdlg: "0", xs: "20px" },
-                        maxWidth: { sm: "460px", xs: "308px" },
-                        width: "100%",
+                        gap: { mdlg: "40px", xs: "0px" },
+                        mb: {
+                          mdlg: "0px",
+                          xs: "20px",
+                        },
+                        flexDirection: {
+                          mdlg: "row",
+                          xs: "column-reverse",
+                        },
                       }}
                     >
-                      <Box borderRadius={"10px"} overflow={"hidden"}>
+                      <Stack
+                        flex={1}
+                        sx={{ gap: { mdlg: "40px", xs: "15px" } }}
+                      >
+                        <Heading variant="h3">{data.label}</Heading>
                         <Box
-                          component={"figure"}
+                          component={"ul"}
                           m="0"
+                          display={"flex"}
+                          flexDirection={"column"}
                           sx={{
-                            verticalAlign: "middle",
-                            maxWidth: "100%",
-                            width: "auto",
-                            position: "relative",
+                            gap: {
+                              mdlg: "25px",
+                              xs: "10px",
+                            },
                           }}
                         >
+                          {data?.items?.map((item) => {
+                            return (
+                              <Box
+                                component={"li"}
+                                sx={{
+                                  listStyleType: "none",
+                                }}
+                              >
+                                <Box position={"relative"}>
+                                  <Box
+                                    sx={{
+                                      position: "absolute",
+                                      left: "0px",
+                                      top: "8px",
+                                    }}
+                                  >
+                                    <svg
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      width="14.393"
+                                      height="10.111"
+                                    >
+                                      <path
+                                        fill="none"
+                                        stroke="#60c458"
+                                        strokeWidth={2}
+                                        d="M.697 4.107 5.45 8.718l8.247-8"
+                                        data-name="tick - icon"
+                                      />
+                                    </svg>
+                                  </Box>
+                                  <Paragraph
+                                    sx={{
+                                      pl: { sm: "30px", xs: "25px" },
+                                    }}
+                                  >
+                                    {item.label}
+                                  </Paragraph>
+                                </Box>
+                              </Box>
+                            );
+                          })}
+                        </Box>
+                      </Stack>
+                      <Box
+                        flex={1}
+                        sx={{
+                          mb: { mdlg: "0", xs: "20px" },
+                          maxWidth: { sm: "460px", xs: "308px" },
+                          width: "100%",
+                        }}
+                      >
+                        <Box borderRadius={"10px"} overflow={"hidden"}>
                           <Box
-                            component={"img"}
+                            component={"figure"}
+                            m="0"
                             sx={{
+                              verticalAlign: "middle",
                               maxWidth: "100%",
-                              height: "auto",
+                              width: "auto",
+                              position: "relative",
                             }}
-                            src={data.imageUrl}
-                          ></Box>
+                          >
+                            <Box
+                              component={"img"}
+                              sx={{
+                                maxWidth: "100%",
+                                height: "auto",
+                              }}
+                              src={data.imageUrl}
+                            ></Box>
+                          </Box>
                         </Box>
                       </Box>
                     </Box>
-                  </Box>
-                </TabPanel>
-              );
-            })}
+                  </Tabs.TabPanel>
+                );
+              })}
+            </Tabs>
           </Box>
+
           <Box
             sx={{
               display: {
@@ -312,7 +324,7 @@ function KioskModeSection() {
                     }}
                     bgcolor={(theme) =>
                       tabValue === tabPanelData.value
-                        ? "rgb(2 10 25)"
+                        ? theme.hexnode.colors.headerBgColor
                         : theme.hexnode.colors.textLight
                     }
                     onClick={() => {
@@ -390,7 +402,7 @@ function KioskModeSection() {
 
                   <Stack
                     px={"15px"}
-                    bgcolor={"rgb(247 247 247)"}
+                    bgcolor={(theme) => theme.hexnode.colors.bodyLightGrey}
                     flexDirection={"column-reverse"}
                     width={"100%"}
                     maxHeight={
@@ -418,7 +430,7 @@ function KioskModeSection() {
                         fontWeight={"700"}
                         fontSize={"20px"}
                         pb={"15px"}
-                        color={"rgb(2 10 25)"}
+                        color={(theme) => theme.hexnode.colors.headerBgColor}
                         maxWidth={"670px"}
                       >
                         {tabPanelData?.label}

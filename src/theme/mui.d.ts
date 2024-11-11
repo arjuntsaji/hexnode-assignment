@@ -29,6 +29,7 @@ declare module "@mui/material/styles" {
         headerBgColor: string;
         dividerBgColor: string;
         textLight: string;
+        bodyLightGrey: string;
       };
       spacing: SpacingType;
     };
@@ -60,6 +61,7 @@ declare module "@mui/material/styles" {
         headerBgColor?: string;
         dividerBgColor?: string;
         textLight?: string;
+        bodyLightGrey?: string;
       };
       spacing: SpacingType;
     };

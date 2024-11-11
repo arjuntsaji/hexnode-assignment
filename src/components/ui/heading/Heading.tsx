@@ -46,6 +46,8 @@ function Heading({
       {...others}
       sx={{
         m: "0",
+        fontFamily: "inherit",
+        letterSpacing: "auto",
         ...headingStyle,
         ...others?.sx,
       }}

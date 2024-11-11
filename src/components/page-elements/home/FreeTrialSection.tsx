@@ -15,7 +15,7 @@ function FreeTrialSection() {
           md: "330px",
         },
       }}
-      bgcolor={"rgb(2 10 25)"}
+      bgcolor={(theme) => theme.hexnode.colors.headerBgColor}
       display={"flex"}
       justifyContent={"center"}
       alignItems={"center"}

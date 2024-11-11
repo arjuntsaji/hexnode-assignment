@@ -24,6 +24,7 @@ const drawerMaxUnderSM = "100vw";
 export default function AppBar(props: Props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
+
   const theme = useTheme();
 
   const trigger = useScrollTrigger({
@@ -31,7 +32,6 @@ export default function AppBar(props: Props) {
     threshold: 0,
     target: window ? window() : undefined,
   });
-  console.log(trigger, "triggertrigger");
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
@@ -84,6 +84,19 @@ export default function AppBar(props: Props) {
           paddingBottom: "2px",
           boxShadow: "none",
           borderBottom: trigger ? "1px solid #dbd9d2" : "none",
+          "&:hover": {
+            backgroundColor: {
+              lg: theme.hexnode.colors.bodyBgColor,
+            },
+            transition: {
+              lg: "all 0.3s linear",
+            },
+            "& .navLogo": {
+              fill: {
+                lg: "#020a19 !important",
+              },
+            },
+          },
         }}
       >
         <Toolbar
@@ -188,12 +201,6 @@ export default function AppBar(props: Props) {
         </Drawer>
       </nav>
       <Box component="main" sx={{ px: 0 }}>
-        {/* <Toolbar
-          sx={{
-            height: "65px",
-            backgroundColor: theme.hexnode.colors.headerBgColor,
-          }}
-        /> */}
         {props?.children}
       </Box>
       <Footer />

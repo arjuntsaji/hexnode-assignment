@@ -22,7 +22,11 @@ function TabPanel({
   return (
     <>
       {currentTabValue === value && (
-        <Box p={"40px"} bgcolor={"rgb(247 247 247)"} textAlign={"initial"}>
+        <Box
+          p={"40px"}
+          bgcolor={(theme) => theme.hexnode.colors.bodyLightGrey}
+          textAlign={"initial"}
+        >
           <AnimatedBox direction={direction}>{children}</AnimatedBox>
         </Box>
       )}
