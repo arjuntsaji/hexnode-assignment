@@ -28,8 +28,8 @@ The project consists of the following key elements:
 1. Clone the repository:
 
    ```bash
-   git clone [repository-url]
-   cd hexnode-kiosk-replica
+   git clone https://github.com/arjuntsaji/hexnode-assignment.git
+   cd hexnode-assignment
    ```
 
 2. Install dependencies:
@@ -57,7 +57,7 @@ This will run the app in development mode. Open [http://localhost:3000](http://l
 
 1. **Responsive Layout**: Material-UI’s breakpoints were leveraged to establish a responsive structure.
 2. **Custom Components**: Tabs, accordions, and other UI elements were crafted from scratch to ensure a match with the Hexnode design.
-3. **Performance Optimization**: Lazy-loaded images and used minimal dependencies to keep the app lightweight and performant.
+3. **Performance Optimization**: optimized components and used minimal dependencies to keep the app lightweight and performant.
 
 ## Bonus Features
 
