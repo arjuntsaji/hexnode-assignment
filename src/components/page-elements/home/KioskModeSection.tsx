@@ -188,6 +188,7 @@ function KioskModeSection() {
                 xs: "none",
               },
             }}
+            overflow={"hidden"}
           >
             <Tabs
               tabItems={TabItems}
