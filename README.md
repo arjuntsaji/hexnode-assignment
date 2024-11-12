@@ -1,6 +1,6 @@
 # Hexnode Kiosk Solution Page Replica
 
-This project is a replica of the [Hexnode Kiosk Solution](https://www.hexnode.com) webpage, created as part of an interview task. The focus is on accurately replicating the layout, responsiveness, and interactive features of the original page using **React.js** with **TypeScript** and **Material-UI**.
+This project is a replica of the [Hexnode Kiosk Solution](https://www.hexnode.com/solutions/hexnode-kiosk/) webpage, created as part of an interview task. The focus is on accurately replicating the layout, responsiveness, and interactive features of the original page using **React.js** with **TypeScript** and **Material-UI**.
 
 ## Project Structure
 
