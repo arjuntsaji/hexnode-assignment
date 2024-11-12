@@ -167,6 +167,17 @@ function KioskModeSection() {
             fontFamily={"inherit"}
             letterSpacing={"auto"}
             aria-describedby="kiosk-mode-section-description"
+            fontWeight={"700"}
+            sx={{
+              fontSize: {
+                xs: "32px",
+                sm: "40px",
+              },
+              lineHeight: {
+                sm: "1.3",
+                xs: "40px",
+              },
+            }}
           >
             Specific kiosk modes for unique use cases
           </Typography>

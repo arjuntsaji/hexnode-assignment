@@ -144,6 +144,7 @@ function Tabs({
                     transitionDuration: ".4s",
                   }}
                   fontFamily={"inherit"}
+                  letterSpacing={0}
                 >
                   {item?.label}
                 </Typography>

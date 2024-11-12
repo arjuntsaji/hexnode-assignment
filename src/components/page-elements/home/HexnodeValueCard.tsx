@@ -392,6 +392,9 @@ function HexnodeValueCard() {
                     }
                   }}
                   aria-live="polite"
+                  display={"flex"}
+                  alignItems={"center"}
+                  justifyContent={"center"}
                 >
                   <Box
                     alt="previous arrow"
@@ -416,6 +419,9 @@ function HexnodeValueCard() {
                       mdlg: "translateY(50%)",
                     },
                   }}
+                  display={"flex"}
+                  alignItems={"center"}
+                  justifyContent={"center"}
                   onClick={() => {
                     if (!status?.isLast) {
                       sliderRef?.current?.slickNext();
@@ -462,9 +468,11 @@ function PrevArrow(props: any) {
           mdlg: "translateY(50%)",
         },
         display: {
-          mdlg: "initial",
+          mdlg: "flex",
           xs: "none",
         },
+        alignItems: "center",
+        justifyContent: "center",
       }}
       {...(!status?.isFirst && { onClick })}
       aria-label={`Previous Item`}
@@ -502,9 +510,11 @@ function NextArrow(props: any) {
           mdlg: "translateY(50%)",
         },
         display: {
-          mdlg: "initial",
+          mdlg: "flex",
           xs: "none",
         },
+        alignItems: "center",
+        justifyContent: "center",
       }}
       {...(!status?.isLast && { onClick })}
       aria-label={`Next Item`}

@@ -1,8 +1,52 @@
-import { Box, Button } from "@mui/material";
+import { Box, Button, keyframes } from "@mui/material";
 import Container from "../../ui/container/Container";
 import Input from "../../ui/input/Input";
+import { useState } from "react";
+import { emailPattern } from "../../../utils/common.regex";
 
+const showErrorAnimation = keyframes`
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
+
+const hideErrorAnimation = keyframes`
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+`;
 function FreeTrialSection() {
+  const [email, setEmail] = useState("");
+  const [error, setError] = useState("");
+  const onSubmit = () => {
+    const trimmedEmail = email.trim();
+    if (!trimmedEmail) {
+      setError("Please enter your work email");
+      setTimeout(() => {
+        setError("");
+      }, 3000);
+      return;
+    }
+    if (!emailPattern.test(trimmedEmail)) {
+      setError("Invalid email format");
+      setTimeout(() => {
+        setError("");
+      }, 3000);
+      return;
+    }
+    setError("");
+    console.log("Email submitted:", trimmedEmail);
+  };
   return (
     <Box
       component={"section"}
@@ -42,42 +86,77 @@ function FreeTrialSection() {
             Sign up and try Hexnode free for 14 days!
           </Box>
           <Box maxWidth={"580PX"} mx={"auto"}>
-            <Box maxWidth={"527PX"} mx={"auto"}>
-              <Box component={"form"} p={0} m={0}>
+            <Box>
+              <Box maxWidth={"527PX"} mx={"auto"} position={"relative"}>
+                <Box component={"form"} p={0} m={0}>
+                  <Box
+                    display={"flex"}
+                    sx={{
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                      flexDirection: {
+                        md: "row",
+                        xs: "column",
+                      },
+                    }}
+                  >
+                    <Box
+                      width={"100%"}
+                      sx={{ maxWidth: "325px", mr: { md: "8px" } }}
+                    >
+                      <Input
+                        placeholder="Your Work Email"
+                        onChange={(e) => setEmail(e.target.value)}
+                      />
+                    </Box>
+
+                    <Button
+                      variant="contained"
+                      color="error"
+                      sx={{
+                        maxWidth: { md: "195px", xs: "325px", width: "100%" },
+                        mt: { md: "0", xs: "15px" },
+                        height: "53px",
+                        fontSize: "17px",
+                        fontWeight: "400",
+                        lineHeight: "24px",
+                        textTransform: "uppercase",
+                      }}
+                      aria-label="Get started button"
+                      onClick={onSubmit}
+                    >
+                      GET STARTED
+                    </Button>
+                  </Box>
+                </Box>
                 <Box
-                  display={"flex"}
                   sx={{
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                    flexDirection: {
-                      md: "row",
-                      xs: "column",
-                    },
+                    pt: "0px",
+                    position: "relative",
                   }}
                 >
                   <Box
-                    width={"100%"}
-                    sx={{ maxWidth: "325px", mr: { md: "8px" } }}
-                  >
-                    <Input placeholder="Your Work Email" />
-                  </Box>
-
-                  <Button
-                    variant="contained"
-                    color="error"
+                    component={"span"}
                     sx={{
-                      maxWidth: { md: "195px", xs: "325px", width: "100%" },
-                      mt: { md: "0", xs: "15px" },
-                      height: "53px",
-                      fontSize: "17px",
-                      fontWeight: "400",
                       lineHeight: "24px",
-                      textTransform: "uppercase",
+                      fontWeight: "200",
+                      fontSize: "14px",
+                      // textAlign: "center",
+                      p: 0,
+                      m: 0,
+                      width: "100%",
+                      display: "block",
+                      animation: `${
+                        error ? showErrorAnimation : hideErrorAnimation
+                      } 2s both`,
                     }}
-                    aria-label="Get started button"
+                    color={(theme) => theme.hexnode.colors.textLight}
+                    position={"absolute"}
+                    top={0}
+                    left={"0"}
                   >
-                    GET STARTED
-                  </Button>
+                    {error}
+                  </Box>
                 </Box>
               </Box>
             </Box>

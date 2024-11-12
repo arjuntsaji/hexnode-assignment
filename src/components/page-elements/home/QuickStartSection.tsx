@@ -1,14 +1,54 @@
-import { Box, Button, Stack } from "@mui/material";
+import { Box, Button, keyframes, Stack } from "@mui/material";
 
 import Input from "../../ui/input/Input";
 import Container from "../../ui/container/Container";
 import Heading from "../../ui/heading/Heading";
 import { useState } from "react";
+import { emailPattern } from "../../../utils/common.regex";
+
+const showErrorAnimation = keyframes`
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
+
+const hideErrorAnimation = keyframes`
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+`;
 
 function QuickStartSection() {
   const [email, setEmail] = useState("");
+  const [error, setError] = useState("");
   const onSubmit = () => {
-    console.log(email, "email");
+    const trimmedEmail = email.trim();
+    if (!trimmedEmail) {
+      setError("Please enter your work email");
+      setTimeout(() => {
+        setError("");
+      }, 3000);
+      return;
+    }
+    if (!emailPattern.test(trimmedEmail)) {
+      setError("Invalid email format");
+      setTimeout(() => {
+        setError("");
+      }, 3000);
+      return;
+    }
+    setError("");
+    console.log("Email submitted:", trimmedEmail);
   };
   return (
     <Box
@@ -70,38 +110,73 @@ function QuickStartSection() {
           >
             Turn your devices into kiosks in a few minutes with Hexnode UEM
           </Heading>
-          <Box
-            display={"flex"}
-            sx={{
-              gap: { sm: "8px", xs: "20px" },
-              flexDirection: {
-                sm: "row",
-                xs: "column",
-              },
-              alignItems: {
-                xs: "center",
-                sm: "initial",
-              },
-              // alignItems: "center",
-            }}
-          >
-            <Box width={"100%"} sx={{ maxWidth: { sm: "280px", xs: "340px" } }}>
-              <Input
-                placeholder="Your Work Email"
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </Box>
-
-            <Button
-              variant="contained"
-              color="error"
-              sx={{ maxWidth: { sm: "210px", xs: "340px" } }}
-              fullWidth
-              onClick={onSubmit}
-              aria-label="Get Started Now"
+          <Box position={"relative"}>
+            <Box
+              display={"flex"}
+              sx={{
+                gap: { sm: "8px", xs: "20px" },
+                flexDirection: {
+                  sm: "row",
+                  xs: "column",
+                },
+                alignItems: {
+                  xs: "center",
+                  sm: "initial",
+                },
+                // alignItems: "center",
+              }}
+              component={"form"}
             >
-              GET STARTED NOW!
-            </Button>
+              <Box
+                width={"100%"}
+                sx={{ maxWidth: { sm: "280px", xs: "340px" } }}
+              >
+                <Input
+                  placeholder="Your Work Email"
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </Box>
+
+              <Button
+                variant="contained"
+                color="error"
+                sx={{ maxWidth: { sm: "210px", xs: "340px" } }}
+                fullWidth
+                onClick={onSubmit}
+                aria-label="Get Started Now"
+              >
+                GET STARTED NOW!
+              </Button>
+            </Box>
+            <Box
+              sx={{
+                pt: "20px",
+                position: "relative",
+              }}
+            >
+              <Box
+                component={"span"}
+                sx={{
+                  lineHeight: "24px",
+                  fontWeight: "200",
+                  fontSize: "14px",
+                  // textAlign: "center",
+                  p: 0,
+                  m: 0,
+                  width: "100%",
+                  display: "block",
+                  animation: `${
+                    error ? showErrorAnimation : hideErrorAnimation
+                  } 2s both`,
+                }}
+                color={(theme) => theme.hexnode.colors.textLight}
+                position={"absolute"}
+                top={0}
+                left={"40%"}
+              >
+                {error}
+              </Box>
+            </Box>
           </Box>
         </Stack>
         <Box
