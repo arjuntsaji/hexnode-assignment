@@ -96,7 +96,6 @@ function HexnodeValueCard() {
                 beforeChange={(current, next) => {
                   const isLast = sliderData?.length - 1 === next;
                   const isFirst = next === 0;
-                  console.log(current, next, "isLast");
                   setStatus(() => ({
                     isFirst,
                     isLast,

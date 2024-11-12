@@ -82,7 +82,7 @@ function AppThemeProvider({
       values: {
         xs: 0,
         mobile: 480,
-        sm: 639,
+        sm: 640,
         md: 768,
         mdlg: 1024,
         lg: 1279,

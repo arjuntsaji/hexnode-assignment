@@ -26,6 +26,16 @@ p,
 pre {
   margin: 0;
 }
+audio,
+canvas,
+embed,
+iframe,
+img,
+object,
+svg,
+video {
+  display: block;
+}
 :root {
   --hex-mid-night-blue: #101420;
   --hex-light-mid-night-blue: #111521;

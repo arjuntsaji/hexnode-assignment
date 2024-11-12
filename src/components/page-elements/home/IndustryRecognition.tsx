@@ -33,6 +33,7 @@ function IndustryRecognition() {
       component={"section"}
       role="region"
       aria-labelledby="industry-recognition-title"
+      id="industry-recognition"
     >
       <Container>
         <Box

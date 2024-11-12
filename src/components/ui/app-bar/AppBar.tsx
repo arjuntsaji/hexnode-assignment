@@ -16,13 +16,18 @@ import Footer from "../footer/Footer";
 interface Props {
   window?: () => Window;
   children?: React.ReactNode;
+  activeMdTopBar?: {
+    scrollStart: boolean;
+    active: boolean;
+    downward: boolean;
+  };
 }
 
 const drawerMaxLgWidth = "50vw";
 const drawerMaxUnderSM = "100vw";
 
 export default function AppBar(props: Props) {
-  const { window } = props;
+  const { window, activeMdTopBar } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   const theme = useTheme();
@@ -163,20 +168,42 @@ export default function AppBar(props: Props) {
             >
               <AppNameIcon color={trigger ? "#020a19" : "#fff"} />
             </Box>
-            <IconButton
-              color="inherit"
-              aria-label="open drawer"
-              edge="start"
-              onClick={handleDrawerToggle}
-              sx={{
-                mr: 2,
-                display: { lg: "none" },
-              }}
-            >
-              <MenuIcon
-                color={trigger ? "#020a19" : theme.hexnode.colors.bodyBgColor}
-              />
-            </IconButton>
+            <Box>
+              <Button
+                variant="contained"
+                color="error"
+                aria-label="Start 14 day free trial"
+                sx={{
+                  mr: "50px",
+                  display: {
+                    xs: "none",
+                    sm: "initial",
+                    lg: "none",
+                  },
+                  transition:
+                    "opacity .3s ease-in-out .1s, transform .3s ease-in-out",
+                  zIndex: activeMdTopBar?.active ? "2000" : "1",
+                  visibility: activeMdTopBar?.active ? "visible" : "hidden",
+                  opacity: activeMdTopBar?.active ? 1 : 0,
+                }}
+              >
+                14 DAY FREE TRIAL
+              </Button>
+              <IconButton
+                color="inherit"
+                aria-label="open drawer"
+                edge="start"
+                onClick={handleDrawerToggle}
+                sx={{
+                  mr: 2,
+                  display: { lg: "none" },
+                }}
+              >
+                <MenuIcon
+                  color={trigger ? "#020a19" : theme.hexnode.colors.bodyBgColor}
+                />
+              </IconButton>
+            </Box>
           </Box>
 
           <Typography
@@ -209,6 +236,41 @@ export default function AppBar(props: Props) {
           </Box>
         </Toolbar>
       </MUIAppBar>
+      <Box
+        sx={{
+          transform: `translateY(${
+            activeMdTopBar?.active && activeMdTopBar?.downward ? "-67" : "-1"
+          }px)`,
+          zIndex: activeMdTopBar?.active && !mobileOpen ? "2000" : "1",
+          visibility:
+            activeMdTopBar?.active && !mobileOpen ? "visible" : "hidden",
+          opacity: activeMdTopBar?.active && !mobileOpen ? 1 : 0,
+          transition: {
+            sm: "opacity .3s ease-in-out .05s, transform .3s ease-in-out",
+            xs: "opacity .3s ease-in-out .1s, transform .3s ease-in-out",
+          },
+          backgroundColor: (theme) => theme.hexnode.colors.textLight,
+          borderBottom: "1px solid rgb(219 217 210)",
+          width: "100%",
+          position: "fixed",
+          top: "67px",
+          left: 0,
+          display: {
+            xs: "initial",
+            sm: "none",
+          },
+        }}
+      >
+        <Box mx={"auto"} textAlign={"right"} py={"13px"} width={"88%"}>
+          <Button
+            variant="contained"
+            color="error"
+            aria-label="Start 14 day free trial"
+          >
+            14 DAY FREE TRIAL
+          </Button>
+        </Box>
+      </Box>
       <nav>
         <Drawer
           anchor="right"

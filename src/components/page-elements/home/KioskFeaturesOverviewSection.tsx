@@ -10,8 +10,11 @@ const AccordionData = [
     content:
       "Deploy kiosk-enabled devices straight out of the box. Flash a custom Android Enterprise, Samsung Knox or ROM with Hexnode App on the devices by collaborating with OEM vendors who provide specially configured ROMs.",
     imageSrc:
-      "https://www.hexnode.com/_next/image/?url=https%3A%2F%2Fstatic.hexnode.com%2Fv2%2Fassets%2Fimg%2Fads-pages%2Fkiosk-mode%2F2x%2Feffortless-kiosk-deployement-image.jpg&w=640&q=80",
+      "https://www.hexnode.com/_next/image/?url=https%3A%2F%2Fstatic.hexnode.com%2Fv2%2Fassets%2Fimg%2Fads-pages%2Fkiosk-mode%2F2x%2Feffortless-kiosk-deployement-image.jpg&w=1200&q=80",
     feature: "Zero Touch Kiosk",
+    featuresSx: {
+      top: "20%",
+    },
   },
   {
     label: "Customized interface for brand visibility",
@@ -20,6 +23,9 @@ const AccordionData = [
     imageSrc:
       "https://www.hexnode.com/_next/image/?url=https%3A%2F%2Fstatic.hexnode.com%2Fv2%2Fassets%2Fimg%2Fads-pages%2Fkiosk-mode%2F2x%2Fcustomized-interface-image.jpg&w=640&q=80",
     feature: "Brand visibility",
+    featuresSx: {
+      top: "80%",
+    },
   },
   {
     label: "What more can you do with Hexnode kiosk?",
@@ -28,6 +34,9 @@ const AccordionData = [
     imageSrc:
       "https://www.hexnode.com/_next/image/?url=https%3A%2F%2Fstatic.hexnode.com%2Fv2%2Fassets%2Fimg%2Fads-pages%2Fkiosk-mode%2F2x%2Fpower-up-protection-image.jpg&w=640&q=80",
     feature: "Data security",
+    featuresSx: {
+      top: "60%",
+    },
   },
   {
     label: "Secure and update your app ecosystem",
@@ -36,6 +45,9 @@ const AccordionData = [
     imageSrc:
       "https://www.hexnode.com/_next/image/?url=https%3A%2F%2Fstatic.hexnode.com%2Fv2%2Fassets%2Fimg%2Fads-pages%2Fkiosk-mode%2F2x%2Fsecure-app-ecosystem.jpg&w=640&q=80",
     feature: "App management",
+    featuresSx: {
+      top: "84%",
+    },
   },
   {
     label: "Provide an easy-to-use interface for end-users",
@@ -44,6 +56,9 @@ const AccordionData = [
     imageSrc:
       "https://www.hexnode.com/_next/image/?url=https%3A%2F%2Fstatic.hexnode.com%2Fv2%2Fassets%2Fimg%2Fads-pages%2Fkiosk-mode%2F2x%2Feasy-to-use-interface-image.jpg&w=640&q=80",
     feature: "Easy to use interface",
+    featuresSx: {
+      top: "50%",
+    },
   },
 ];
 
@@ -51,13 +66,18 @@ function KioskFeaturesOverviewSection() {
   const [hover, setHover] = useState(false);
   const [activeAccordion, setActiveAccordion] = useState<number>(0);
   const prevActiveAccordion = useRef(activeAccordion);
-  const direction =
-    activeAccordion > prevActiveAccordion.current ? "top" : "bottom";
+  const direction = useMemo(
+    () => (activeAccordion > prevActiveAccordion.current ? "top" : "bottom"),
+    [activeAccordion, prevActiveAccordion]
+  );
 
   useEffect(() => {
     prevActiveAccordion.current = activeAccordion;
   }, [activeAccordion]);
-
+  const imageItem = useMemo(
+    () => AccordionData[activeAccordion ?? 0],
+    [activeAccordion]
+  );
   return (
     <Box
       component={"section"}
@@ -114,31 +134,25 @@ function KioskFeaturesOverviewSection() {
             >
               <Box
                 sx={{
-                  maxWidth: {
-                    md: "calc(100% - 25px)",
-                  },
-                  borderRadius: "10px",
                   overflow: "hidden",
                 }}
                 onMouseEnter={() => setHover(true)}
                 onMouseLeave={() => setHover(false)}
                 position={"relative"}
               >
-                <AnimatedBox
-                  key={AccordionData[activeAccordion ?? 0]?.imageSrc}
+                <AnimatedImage
                   direction={direction}
-                >
-                  <Box
-                    component={"img"}
-                    sx={{ maxWidth: "100%" }}
-                    src={AccordionData[activeAccordion ?? 0]?.imageSrc}
-                  />
-                </AnimatedBox>
+                  imageSrc={imageItem.imageSrc}
+                  alt={imageItem?.label}
+                />
+
                 <Box
                   sx={{
                     position: "absolute",
                     right: "0",
-                    top: hover ? "19%" : "20%",
+                    top: hover
+                      ? `calc(${imageItem.featuresSx.top} - 1%)`
+                      : imageItem.featuresSx.top,
                     pl: "25px",
                     py: "15px",
                     overflow: "hidden",
@@ -224,7 +238,7 @@ function KioskFeaturesOverviewSection() {
                     <Box
                       position={"relative"}
                       sx={{
-                        maxWidth: "calc(320px + 15px)",
+                        maxWidth: "calc(340px + 15px)",
                         display: {
                           mdlg: "none",
                           xs: activeAccordion === index ? "initial" : "none",
@@ -236,7 +250,14 @@ function KioskFeaturesOverviewSection() {
                       mx={"auto"}
                       display={"block"}
                     >
-                      <Box maxWidth={"320px"}>
+                      <AnimatedBox
+                        sx={{
+                          maxWidth: {
+                            mobile: "340px",
+                            xs: "320px",
+                          },
+                        }}
+                      >
                         <Box
                           component={"img"}
                           maxHeight={"320px"}
@@ -248,12 +269,12 @@ function KioskFeaturesOverviewSection() {
                             borderRadius: "10px",
                           }}
                         />
-                      </Box>
+                      </AnimatedBox>
                       <Box
                         sx={{
                           position: "absolute",
                           right: "-20px",
-                          top: "80%",
+                          top: imageItem.featuresSx.top,
                           pl: "25px",
                           py: "15px",
                           overflow: "hidden",
@@ -293,7 +314,7 @@ function KioskFeaturesOverviewSection() {
                               src="https://static.hexnode.com/v2/assets/img/ads-pages/ads-tick-green.svg"
                               sx={{
                                 objectFit: "contain",
-                                maxHeight: "100%",
+                                maxHeight: "320px",
                               }}
                               alt="Tick icon"
                             />
@@ -428,3 +449,34 @@ function KioskFeaturesOverviewSection() {
 }
 
 export default KioskFeaturesOverviewSection;
+
+const AnimatedImage = React.memo(
+  ({
+    imageSrc,
+    direction,
+    alt,
+  }: {
+    imageSrc: string;
+    direction: any;
+    alt: string;
+  }) => {
+    return (
+      <AnimatedBox
+        key={imageSrc}
+        direction={direction}
+        sx={{
+          maxWidth: {
+            md: "calc(100% - 25px)",
+          },
+        }}
+      >
+        <Box
+          component={"img"}
+          sx={{ maxWidth: "100%", borderRadius: "10px" }}
+          src={imageSrc}
+          alt={alt}
+        />
+      </AnimatedBox>
+    );
+  }
+);
