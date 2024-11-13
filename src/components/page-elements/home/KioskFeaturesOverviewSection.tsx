@@ -448,7 +448,7 @@ function KioskFeaturesOverviewSection() {
   );
 }
 
-export default KioskFeaturesOverviewSection;
+export default React.memo(KioskFeaturesOverviewSection);
 
 const AnimatedImage = React.memo(
   ({

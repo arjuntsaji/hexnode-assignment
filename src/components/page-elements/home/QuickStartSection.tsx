@@ -3,7 +3,7 @@ import { Box, Button, keyframes, Stack } from "@mui/material";
 import Input from "../../ui/input/Input";
 import Container from "../../ui/container/Container";
 import Heading from "../../ui/heading/Heading";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { emailPattern } from "../../../utils/common.regex";
 
 const showErrorAnimation = keyframes`
@@ -31,7 +31,7 @@ const hideErrorAnimation = keyframes`
 function QuickStartSection() {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
-  const onSubmit = () => {
+  const onSubmit = useCallback(() => {
     const trimmedEmail = email.trim();
     if (!trimmedEmail) {
       setError("Please enter your work email");
@@ -49,7 +49,7 @@ function QuickStartSection() {
     }
     setError("");
     console.log("Email submitted:", trimmedEmail);
-  };
+  }, [email]);
   return (
     <Box
       bgcolor={(theme) => theme.hexnode.colors.headerBgColor}

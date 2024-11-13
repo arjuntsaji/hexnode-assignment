@@ -1,5 +1,5 @@
 import { Box, Stack, Typography } from "@mui/material";
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import Container from "../../ui/container/Container";
 import Heading from "../../ui/heading/Heading";
 import Paragraph from "../../ui/heading/Paragraph";
@@ -140,9 +140,9 @@ const TabPanelData = [
 function KioskModeSection() {
   const [tabValue, setTabValue] = useState<number | null>(0);
 
-  const handleTabClick = (value: number) => {
+  const handleTabClick = useCallback((value: number) => {
     setTabValue(value);
-  };
+  }, []);
 
   return (
     <Box
@@ -151,7 +151,7 @@ function KioskModeSection() {
       }}
       textAlign={"center"}
       component={"section"}
-      aria-role="region"
+      role="region"
       aria-labelledby="kiosk-mode-section-heading"
     >
       <Container>
@@ -202,7 +202,7 @@ function KioskModeSection() {
                     currentTabValue={tabValue ?? 0}
                     value={data.value}
                     aria-labelledby={`tab-panel-${data.value}`}
-                    aria-role="tabpanel"
+                    role="tabpanel"
                   >
                     <Box
                       display={"flex"}
@@ -579,4 +579,4 @@ function KioskModeSection() {
   );
 }
 
-export default KioskModeSection;
+export default React.memo(KioskModeSection);

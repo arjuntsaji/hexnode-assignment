@@ -1,7 +1,7 @@
 import { Box, BoxProps } from "@mui/material";
 
 import AnimatedBox from "../animation/AnimatedBox";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useMemo, useRef } from "react";
 
 function TabPanel({
   children,
@@ -14,7 +14,10 @@ function TabPanel({
   value: number;
 } & BoxProps) {
   const prevTabValue = useRef(currentTabValue);
-  const direction = currentTabValue > prevTabValue.current ? "right" : "left";
+  const direction = useMemo(
+    () => (currentTabValue > prevTabValue.current ? "right" : "left"),
+    [currentTabValue]
+  );
 
   useEffect(() => {
     prevTabValue.current = currentTabValue;
@@ -37,4 +40,4 @@ function TabPanel({
   );
 }
 
-export default TabPanel;
+export default React.memo(TabPanel);

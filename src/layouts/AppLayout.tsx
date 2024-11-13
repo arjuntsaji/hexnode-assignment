@@ -43,13 +43,13 @@ function AppLayout({ children }: { children: React.ReactNode }) {
       return () => {
         window.removeEventListener("scroll", handleScroll);
         if (timeoutRef.current) {
-          clearTimeout(timeoutRef.current); // Clear timeout on cleanup
+          clearTimeout(timeoutRef.current);
         }
       };
     }
-  }, [lastScrollY, isBelowLg]); // Re-run the effect when lastScrollY or isBelowLg changes
+  }, [lastScrollY, isBelowLg]);
 
   return <AppBar activeMdTopBar={activeMdTopBar}>{children}</AppBar>;
 }
 
-export default AppLayout;
+export default React.memo(AppLayout);

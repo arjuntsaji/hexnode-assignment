@@ -145,4 +145,4 @@ function IndustryRecognition() {
   );
 }
 
-export default IndustryRecognition;
+export default React.memo(IndustryRecognition);

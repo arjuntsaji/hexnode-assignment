@@ -1,7 +1,7 @@
 import { Box, Button, keyframes } from "@mui/material";
 import Container from "../../ui/container/Container";
 import Input from "../../ui/input/Input";
-import { useState } from "react";
+import React, { useState } from "react";
 import { emailPattern } from "../../../utils/common.regex";
 
 const showErrorAnimation = keyframes`
@@ -230,4 +230,4 @@ function FreeTrialSection() {
   );
 }
 
-export default FreeTrialSection;
+export default React.memo(FreeTrialSection);

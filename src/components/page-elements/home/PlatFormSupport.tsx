@@ -118,4 +118,4 @@ function PlatFormSupport() {
   );
 }
 
-export default PlatFormSupport;
+export default React.memo(PlatFormSupport);

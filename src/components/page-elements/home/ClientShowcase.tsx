@@ -89,4 +89,4 @@ function ClientShowcase() {
   );
 }
 
-export default ClientShowcase;
+export default React.memo(ClientShowcase);

@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import React, { useRef, useState } from "react";
+import React, { useMemo, useRef, useState } from "react";
 import Container from "../../ui/container/Container";
 import Heading from "../../ui/heading/Heading";
 
@@ -39,15 +39,16 @@ function HexnodeValueCard() {
   });
   let sliderRef = useRef<any>(null);
 
-  const settings = {
-    dots: false,
-    infinite: true,
-    speed: 500,
-    // slidesToShow: 1,
-    // slidesToScroll: 1,
-    nextArrow: <NextArrow status={status} />,
-    prevArrow: <PrevArrow status={status} />,
-  };
+  const settings = useMemo(
+    () => ({
+      dots: false,
+      infinite: true,
+      speed: 500,
+      nextArrow: <NextArrow status={status} />,
+      prevArrow: <PrevArrow status={status} />,
+    }),
+    [status]
+  );
 
   return (
     <Box
@@ -446,8 +447,8 @@ function HexnodeValueCard() {
   );
 }
 
-export default HexnodeValueCard;
-function PrevArrow(props: any) {
+export default React.memo(HexnodeValueCard);
+const PrevArrow = React.memo((props: any) => {
   const { onClick, status } = props;
   return (
     <Box
@@ -488,9 +489,9 @@ function PrevArrow(props: any) {
       />
     </Box>
   );
-}
+});
 
-function NextArrow(props: any) {
+const NextArrow = React.memo((props: any) => {
   const { onClick, status } = props;
   return (
     <Box
@@ -530,4 +531,4 @@ function NextArrow(props: any) {
       />
     </Box>
   );
-}
+});

@@ -38,9 +38,9 @@ export default function AppBar(props: Props) {
     target: window ? window() : undefined,
   });
 
-  const handleDrawerToggle = () => {
+  const handleDrawerToggle = React.useCallback(() => {
     setMobileOpen((prevState) => !prevState);
-  };
+  }, [mobileOpen]);
 
   const drawer = (
     <Box sx={{ textAlign: "center" }}>
